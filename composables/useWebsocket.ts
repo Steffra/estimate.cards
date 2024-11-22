@@ -36,7 +36,7 @@ export function useWebsocket() {
         sendMessage('vote', card)
         }
 
-      const sendMessage = (event: 'show' | 'resett' | 'vote', value: string) => {
+      const sendMessage = (event: 'show' | 'reset' | 'vote', value: string) => {
         send(JSON.stringify({ event, value }))
       }
 
