@@ -7,7 +7,7 @@ export function useWebsocket() {
       if (!name) {
         window.location.href = '/join'
       }
-      const { status, data, send, open, close } = useWebSocket(`${protocol}://${location.host}/api/websocket?session=${sessionid}&name=${name}`)
+      const {data, send} = useWebSocket(`${protocol}://${location.host}/api/websocket?session=${sessionid}&name=${name}`)
       const session = ref<Session>({ id: '', cardsVisible: false, players: [] })
       
       watch(data, (newValue) => {
