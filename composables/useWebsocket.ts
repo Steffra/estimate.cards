@@ -27,7 +27,20 @@ export function useWebsocket() {
         }
       })
 
+      const vote = (card: string) => {
+
+        if (session.value.cardsVisible) {
+          return
+        }
+      
+        sendMessage('vote', card)
+        }
+
+      const sendMessage = (event: 'show' | 'resett' | 'vote', value: string) => {
+        send(JSON.stringify({ event, value }))
+      }
+
     return {
-        session
+        session, vote
     };
 }

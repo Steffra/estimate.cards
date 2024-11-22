@@ -8,8 +8,9 @@ const socket = useWebsocket()
    <h1>Session: {{ socket.session.value.id }}</h1>
     <div>
       <p v-for="player in socket.session.value.players" :key="player.id">
-        {{ player.name }}
+        <Player :player="player" />
       </p>
+      <button @click="socket.vote('1')">1</button>
     </div>
   </div>
 </template>

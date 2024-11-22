@@ -1,5 +1,5 @@
 import { nanoid } from 'nanoid'
-import { Peer } from 'crossws'
+import { Peer, Message} from 'crossws'
 
 type Player = {
   id: string,
@@ -70,5 +70,15 @@ export default defineWebSocketHandler({
     }
     removePlayerFromSession(peer.id, session)
     peer.publish(session.id,JSON.stringify(session))
+  },
+  message(peer: Peer, message: Message) {
+    const messageData = message.json() as { event: string, value: string }
+    const event = messageData.event
+    if(event === 'vote'){
+      const session = sessions.find(session => session.players.some(player => player.id === peer.id))
+      const player = session!.players.find(player => player.id === peer.id)
+      player!.card = messageData.value
+      updateClients(peer)
+    }
   }
 })
