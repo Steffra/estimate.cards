@@ -4,15 +4,11 @@
    </div>
 </template>
 
-<script>
-export default {
-    props: {
-        player: {
-            type: Object,
-            required: true
-        }
-    }
-}
+<script setup lang="ts">
+import { type Player } from '~/types/types';
+const { player } = defineProps<{
+  player: Player
+}>()
 </script>
 
 <style scoped>
