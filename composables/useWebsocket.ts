@@ -13,17 +13,15 @@ export function useWebsocket() {
       watch(data, (newValue) => {
         session.value = JSON.parse(newValue)
       
-        if (session.value.id) {
+        if (session.value.id !== sessionid) {
           window.history.pushState({}, '', `/session/${session.value.id}`)
         }
       })
 
       const vote = (card: string) => {
-
         if (session.value.cardsVisible) {
           return
         }
-      
         sendMessage('vote', card)
         }
 
