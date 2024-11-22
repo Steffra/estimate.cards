@@ -77,7 +77,11 @@ export default defineWebSocketHandler({
     if(event === 'vote'){
       const session = sessions.find(session => session.players.some(player => player.id === peer.id))
       const player = session!.players.find(player => player.id === peer.id)
-      player!.card = messageData.value
+      if(player!.card ==messageData.value){
+        player!.card = null
+      }else{
+        player!.card = messageData.value
+      }
       updateClients(peer)
     }
   }
