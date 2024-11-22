@@ -1,17 +1,7 @@
 import { nanoid } from 'nanoid'
 import { Peer, Message} from 'crossws'
+import { type Session } from '../../types/types'
 
-type Player = {
-  id: string,
-  name: string,
-  card: string | null,
-}
-
-type Session = {
-  id: string,
-  cardsVisible: boolean,
-  players: Player[]
-}
 
 const sessions: Session[] = []
 

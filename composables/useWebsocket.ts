@@ -1,15 +1,6 @@
+import { type Session } from '../types/types'
+
 export function useWebsocket() {
-    type Player = {
-        id: string,
-        name: string,
-        card: string | null,
-      }
-      
-      type Session = {
-        id: string,
-        cardsVisible: boolean,
-        players: Player[] 
-      }
       const protocol= window.location.protocol === 'https:' ? 'wss' : 'ws'
       const sessionid = window.location.pathname.split('/').pop()
       const name = window.location.search.split('name=')[1] || window.sessionStorage.getItem('name')
