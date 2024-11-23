@@ -17,6 +17,7 @@
     "vue-router": "^4.3.0"
   },
   "dependencies": {
+    "motion": "^11.11.17",
     "nanoid": "^5.0.8"
   }
 }
