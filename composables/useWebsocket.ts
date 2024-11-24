@@ -23,13 +23,21 @@ export function useWebsocket() {
           return
         }
         sendMessage('vote', card)
-        }
+      }
+
+      const revealCards = () => {
+        sendMessage('show', '')
+      }
+
+      const reset = () => {
+        sendMessage('reset', '')
+      }
 
       const sendMessage = (event: 'show' | 'reset' | 'vote', value: string) => {
         send(JSON.stringify({ event, value }))
       }
 
     return {
-        session, vote
+        session, vote, revealCards, reset
     };
 }

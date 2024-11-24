@@ -15,10 +15,12 @@ const socket = useWebsocket()
   </div>
   <div class="players">
       <p v-for="player in socket.session.value.players" :key="player.id">
-        <Player :player="player" />
+        <Player :player="player" :is-visible="socket.session.value.cardsVisible" />
       </p>
       
     </div>
+    <button @click="socket.revealCards">Reveal votes</button>
+    <button @click="socket.reset">Reset votes</button>
     
 </template>
 

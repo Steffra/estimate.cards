@@ -74,5 +74,16 @@ export default defineWebSocketHandler({
       }
       updateClients(peer)
     }
+    if(event === 'show'){
+      const session = sessions.find(session => session.players.some(player => player.id === peer.id))
+      session!.cardsVisible = true
+      updateClients(peer)
+    }
+    if(event === 'reset'){
+      const session = sessions.find(session => session.players.some(player => player.id === peer.id))
+      session!.cardsVisible = false
+      session!.players.forEach(player => player.card = null)
+      updateClients(peer)
+    }
   }
 })
