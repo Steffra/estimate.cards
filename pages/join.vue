@@ -1,12 +1,22 @@
 <script setup lang="ts">
 const name = ref('')
 const session = ref('')
+
+const nameInStorage = window.sessionStorage.getItem('name')
+if (nameInStorage) {
+  name.value = nameInStorage
+}
+const sessionIdInStorage = window.sessionStorage.getItem('session')
+const sessionIdInUrl = window.location.search.split('session=')[1]
+if (sessionIdInStorage) {
+  session.value = sessionIdInStorage
+} else if (sessionIdInUrl) {
+  session.value = sessionIdInUrl
+}
 function start(){
   window.sessionStorage.setItem('name', name.value)
     if (session.value) {
-        window.location.href = `/session/${session.value}?name=${name.value}`
-    } else {
-        window.location.href = `/session/new?name=${name.value}`
+        window.location.href = `/session/${session.value}`
     }
 }
 </script>
