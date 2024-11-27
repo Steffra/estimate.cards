@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useWebsocket } from '~/composables/useWebsocket'
-const socket = useWebsocket()
+import { useSocket } from '~/composables/useSocket'
+const socket = useSocket()
 </script>
 
 <template>
@@ -15,7 +15,7 @@ const socket = useWebsocket()
   </div>
   <div class="players">
       <p v-for="player in socket.session.value.players" :key="player.id">
-        <Player :player="player" :is-visible="socket.session.value.cardsVisible" />
+        <Player :player="player" :is-visible="socket.session.value.cardsVisible"/>
       </p>
       
     </div>

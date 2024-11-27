@@ -1,6 +1,7 @@
 import { type Session } from '../types/types'
+import { nanoid } from 'nanoid'
 
-export function useWebsocket() {
+export function useSocket() {
       const protocol= window.location.protocol === 'https:' ? 'wss' : 'ws'
       const sessionid = window.location.pathname.split('/').pop()
       const name = window.sessionStorage.getItem('name')
@@ -12,7 +13,8 @@ export function useWebsocket() {
             window.location.href = '/join'
         }
       }
-      const {data, send} = useWebSocket(`${protocol}://${location.host}/api/websocket?session=${sessionid}&name=${name}`)
+      const id = ref(nanoid(32))
+      const {data, send} = useWebSocket(`${protocol}://${location.host}/api/websocket?session=${sessionid}&name=${name}&id=${id.value}`)
       const session = ref<Session>({ id: '', cardsVisible: false, players: [] })
       
       watch(data, (newValue) => {
