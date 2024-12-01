@@ -1,12 +1,12 @@
 <template>
     <div :id="player.id" class="player">
-        <div class="flip-card-container">
-            <div class="flip-card" :class="[{ 'voted': player.card}, { 'visible': isVisible}]" ref="card">
+        <div class="flip-card-container" ref="container">
+            <div class="flip-card" :class="[{'voted': player.card },{ 'visible': isVisible}]" ref="card">
                 <div class="card-back">
-                    <CardsIcon />
+                    <img src="assets/logo_blue.png" width="80" />
                 </div>
                 <div class="card-front">
-                    Front
+                    {{ player.card }}
                 </div>
             </div>
         </div>
@@ -16,19 +16,25 @@
 
 <script setup lang="ts">
 import { type Player } from '~/types/types';
-import { animate, spring } from "motion"
+import { animate, cubicBezier, easeInOut, easeOut, spring } from "motion"
 
 const { player, isVisible } = defineProps<{
     player: Player,
     isVisible: boolean
 }>()
 
+const isOwnCard = player.id === window.sessionStorage.getItem('id');
+const container = ref<HTMLElement | null>(null);
 const card = ref<HTMLElement | null>(null);
 const seed = Math.random();
 
 watch(() => player.card, (newCard, oldCard) => {
+    if(isOwnCard && newCard) {
+        animateOwnCardSelection();
+        return;
+    }
     if (player.card && !oldCard) {
-        animatCardSelection();
+        animateCardSelection();
     }
 });
 
@@ -43,7 +49,7 @@ watch(() => isVisible, () => {
         }, Math.floor(seed * 200));    }
 });
 
-const animatCardSelection = () => {
+const animateCardSelection = () => {
     const cardelement = document.getElementById(player.id);
     animate(
         cardelement!,
@@ -57,11 +63,29 @@ const animatCardSelection = () => {
             { type: spring, stiffness: 800 }
         );
     });
+};
+
+const animateOwnCardSelection = () => {
+    const animationLength = 0.75
+    animate(
+        card.value!,
+        { transform: "rotateZ(5deg) translateY(-10px) rotateY(155deg)" },
+        { duration: animationLength, ease: cubicBezier(.06,.9,.62,.99) }
+    ).then(() => {
+        animate(
+            card.value!,
+            { transform: "rotateZ(0deg) translateY(0px) rotateY(0deg)" },
+            { duration: animationLength, ease: cubicBezier(.06,.9,.62,.99) }
+            );
+    });
+    
+
+   
 
 };
 
 const animateReveal = () => {
-    animatCardSelection();
+    animateCardSelection();
     const bounce = 0.2 + seed * 0.4;
     const duration = 0.5 + seed * 1;
     animate(
@@ -103,13 +127,16 @@ const animateHide = () => {
   position: relative;
   transform-style: preserve-3d;
   transition: .6s .1s;
+  transform: scale(1);
 }
 
 .card-front,
 .card-back {
   width: 100%;
   height: 100%;
-  border-radius: 24px;
+  border-radius: 12px;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+  border:4px solid #011e74;
 
   position: absolute;
   top: 0;
@@ -124,19 +151,21 @@ const animateHide = () => {
 }
 
 .card-back {
-  background-color:beige;
+  background-color: #02b5db;
   transform: rotateY(0deg);
   z-index: 2;
 }
 
 .card-front {
-  background-color:rgb(170, 170, 142);
+  background-color:#02b5db;
+  color:white;
   transform: rotateY(180deg);
   z-index: 1;
+  font-size: 48px;
 }
-.voted {
-    background-color: lightgreen;    
-    color: rgb(51, 83, 51);
+
+.voted .card-back {
+    border:4px solid #f03d13;
 
 }
 </style>
