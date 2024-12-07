@@ -26,7 +26,7 @@ function start(){
     <h1>Join session: </h1>
     <form @submit.prevent="start">
       <label for="name">Name:</label>
-      <input v-model="name">
+      <input v-model="name" autofocus>
       <label for="session">Session id:</label>
       <input v-model="session">
       <button type="submit">Join</button>
