@@ -5,6 +5,11 @@ export default defineNuxtConfig({
       websocket: true
     }
   },
+  routeRules: {
+    '/session/*': {
+    ssr: false,
+    },
+  },
 
   compatibilityDate: '2024-11-19'
 })

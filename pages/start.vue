@@ -1,13 +1,15 @@
 <script setup lang="ts">
 const name = ref('')
 const session = ref(window.location.pathname.split('/').pop())
-function startSession(){
+const router = useRouter()
+
+function startSession() {
   window.sessionStorage.setItem('name', name.value)
-    if (session.value) {
-        window.location.href = `/session/${session.value}?name=${name.value}`
-    } else {
-        window.location.href = `/session/new?name=${name.value}`
-    }
+  if (session.value) {
+    router.push(`/session/${session.value}?name=${name.value}`)
+  } else {
+    router.push(`/session/new?name=${name.value}`)
+  }
 }
 
 </script>
@@ -24,7 +26,7 @@ function startSession(){
 </template>
 
 <style>
-  input {
-    display: block;
-  }
+input {
+  display: block;
+}
 </style>

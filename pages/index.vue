@@ -1,11 +1,11 @@
 <template>
-  <a href="/start">Start session</a>
-  <a href="/join">Join session</a>
+  <NuxtLink to="/start">START SESSION</NuxtLink>
+  <NuxtLink to="/join">JOIN SESSION</NuxtLink>
 </template>
 
 <style>
-  a {
-    display: block;
-    margin: 10px;
-  }
+a {
+  display: block;
+  margin: 10px;
+}
 </style>
