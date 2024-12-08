@@ -1,6 +1,5 @@
 export default defineNuxtConfig({
   modules: ['@vueuse/nuxt', '@nuxt/fonts'],
-  ssr: false,
   nitro: {
     experimental: {
       websocket: true
