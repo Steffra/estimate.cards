@@ -2,7 +2,6 @@
 import { useSocket } from '~/composables/useSocket'
 const socket = useSocket()
 const url = computed(() => {
-
   return window.location.host + '/session/' + socket.session.value.id
 })
 const copyUrlToClipboard = () => {

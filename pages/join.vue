@@ -13,11 +13,11 @@ if (sessionIdInStorage) {
 } else if (sessionIdInUrl) {
   session.value = sessionIdInUrl
 }
-function start(){
+function start() {
   window.sessionStorage.setItem('name', name.value)
-    if (session.value) {
-        window.location.href = `/session/${session.value}`
-    }
+  if (session.value) {
+    window.location.href = `/session/${session.value}`
+  }
 }
 </script>
 
@@ -31,12 +31,12 @@ function start(){
       <input v-model="session">
       <button type="submit">Join</button>
     </form>
-    
+
   </div>
 </template>
 
 <style>
-  input {
-    display: block;
-  }
+input {
+  display: block;
+}
 </style>
