@@ -11,8 +11,8 @@
 
 body {
   font-family: "Poppins", sans-serif;
-  margin: 1rem;
+  margin: 0;
   padding: 0;
-  letter-spacing: 0.8px;
+  letter-spacing: 0.2px;
 }
 </style>

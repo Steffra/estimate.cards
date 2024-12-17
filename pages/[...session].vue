@@ -52,6 +52,7 @@ const toggleVisibility = () => {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding: 1rem;
 }
 
 .players {
@@ -62,14 +63,15 @@ const toggleVisibility = () => {
   justify-content: center;
   height: 100%;
   overflow: scroll;
-  @media (width >= 480px) {
-    gap:16px;
+
+  @media (width >=480px) {
+    gap: 16px;
   }
 
-  @media (width >= 768px) {
-    gap:24px;
+  @media (width >=768px) {
+    gap: 24px;
   }
-  
+
 }
 
 .share-label {
