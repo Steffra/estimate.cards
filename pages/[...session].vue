@@ -11,29 +11,35 @@ const copyUrlToClipboard = () => {
 const selectedCard = computed(() => {
   return socket.session.value.players.find(player => player.id === window.sessionStorage.getItem('id'))?.card
 })
+
+const toggleVisibility = () => {
+  if (socket.session.value.cardsVisible) {
+    socket.reset()
+  } else {
+    socket.revealCards()
+  }
+}
 </script>
 
 <template>
   <div class="session">
     <div>
-      <div class="shareLabel">SHARE THIS SESSION</div>
-      <button v-if="socket.session.value.id" class="shareButton" @click="copyUrlToClipboard"> {{ url }}
+      <div class="share-label">SHARE THIS SESSION</div>
+      <button v-if="socket.session.value.id" class="share-button" @click="copyUrlToClipboard"> {{ url }}
         <ShareIcon />
       </button>
-      <button v-else class="shareButton shareButton--disabled"> loading . . .
+      <button v-else class="share-button share-button--disabled"> loading . . .
         <ShareIcon />
       </button>
-    </div>
-    <div>
-      <button @click="socket.revealCards">Reveal votes</button>
-      <button @click="socket.reset">Reset votes</button>
     </div>
     <div class="players">
-      <p v-for="player in socket.session.value.players" :key="player.id">
+      <div v-for="player in socket.session.value.players" :key="player.id">
         <Player :player="player" :is-visible="socket.session.value.cardsVisible" />
-      </p>
+      </div>
     </div>
-    <div class="votingCards">
+    <ToggleButton @click="toggleVisibility" :is-visible="socket.session.value.cardsVisible"
+      :text="socket.session.value.cardsVisible ? 'NEW ROUND' : 'REVEAL CARDS'" />
+    <div class="voting-cards">
       <VotingCards @vote="socket.vote" :selectedCard="selectedCard" />
     </div>
 
@@ -42,29 +48,37 @@ const selectedCard = computed(() => {
 
 <style>
 .session {
-  height: calc(100vh - 14rem);
-
-  @media (width >=480px) {
-    height: calc(100vh - 15rem);
-  }
+  height: calc(100dvh - 2rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .players {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 8px;
   align-items: center;
   justify-content: center;
   height: 100%;
+  overflow: scroll;
+  @media (width >= 480px) {
+    gap:16px;
+  }
+
+  @media (width >= 768px) {
+    gap:24px;
+  }
+  
 }
 
-.shareLabel {
+.share-label {
   font-size: 11px;
   font-weight: bold;
   color: darkgrey
 }
 
-.shareButton {
+.share-button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -83,13 +97,13 @@ const selectedCard = computed(() => {
   width: 320px;
 }
 
-.shareButton:hover {
+.share-button:hover {
   background-color: #02b5db;
   color: white;
   fill: white;
 }
 
-.shareButton:active {
+.share-button:active {
   outline: 2px solid #011e74;
 
 }

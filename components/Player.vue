@@ -4,8 +4,7 @@
             <div class="flip-card" :class="[{ 'voted': player.card }, { 'visible': isVisible }]" ref="card">
                 <div class="card-back">
                     <div class="card-back__inner" :class="{ 'shadow': player.card }">
-                        <img src="assets/logo_blue.png" width="90" />
-
+                        <img class="background-logo" src="assets/logo_blue.png" />
                     </div>
                 </div>
                 <div class="card-front">
@@ -131,9 +130,12 @@ const cancelAnimation = () => {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-width: 50px;
-    gap: 8px;
-}
+    min-width: 40px;
+    @media (width >= 480px) {
+        min-width: 50px;
+    }
+  }
+
 
 .flip-card-container {
     width: 100px;
@@ -228,5 +230,9 @@ const cancelAnimation = () => {
     height: 50px;
     text-wrap: balance;
     word-wrap: break-word;
+}
+
+.background-logo {
+    width: 90px;
 }
 </style>

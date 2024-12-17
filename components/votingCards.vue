@@ -40,6 +40,6 @@ const cards = computed(() => [
     justify-content: center;
     flex-wrap: wrap;
     max-width: 600px;
-
+    transition: all 1.5s;
 }
 </style>
