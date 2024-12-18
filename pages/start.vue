@@ -36,11 +36,12 @@ h2 {
 }
 
 form {
+  width: 100%;
+
   &>div {
     display: flex;
     flex-direction: row;
     margin-bottom: 1rem;
-    width: 100%;
   }
 }
 </style>

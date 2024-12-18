@@ -19,7 +19,7 @@ input {
     overflow: hidden;
     text-overflow: ellipsis;
     width: 100%;
-
+    font-size: 16px;
 
 }
 
