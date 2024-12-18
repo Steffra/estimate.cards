@@ -1,14 +1,14 @@
 <template>
     <NuxtLink :to="to">
-        <BaseButton :text="text" :type="type" />
+        <BaseButton :text="text" :secondary="secondary" />
     </NuxtLink>
 </template>
 
 <script setup lang="ts">
-const { to, text, type } = defineProps<{
+const { to, text, secondary } = defineProps<{
     to: string
     text: string
-    type: "primary" | "secondary"
+    secondary?: boolean
 }>()
 </script>
 

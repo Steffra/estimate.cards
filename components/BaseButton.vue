@@ -1,11 +1,11 @@
 <template>
-    <button :class="{ 'secondary': type === 'secondary' }">{{ text }}</button>
+    <button :class="{ 'secondary': secondary }">{{ text }}</button>
 </template>
 
 <script setup lang="ts">
-const { text, type } = defineProps<{
+const { text, secondary } = defineProps<{
     text: string
-    type: "primary" | "secondary"
+    secondary?: boolean
 }>()
 </script>
 
