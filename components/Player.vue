@@ -47,7 +47,7 @@ watch(() => isVisible, () => {
     if (isVisible) {
         setTimeout(function () {
             animateReveal();
-        }, Math.floor(seed * 200));
+        }, Math.floor(seed * 100));
     } else {
         setTimeout(function () {
             animateHide();
@@ -101,7 +101,7 @@ const animateReveal = () => {
     cancelAnimation();
     animateCardSelection();
     const bounce = 0.2 + seed * 0.4;
-    const duration = 0.5 + seed * 1;
+    const duration = 1 + seed * 0.5;
     animate(
         card.value!,
         { transform: "rotateY(180deg)" },
