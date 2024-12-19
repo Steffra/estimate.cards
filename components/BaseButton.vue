@@ -1,5 +1,7 @@
 <template>
-    <button :class="{ 'secondary': secondary }">{{ text }}</button>
+    <button :class="{ 'secondary': secondary }">{{ text }}
+        <slot></slot>
+    </button>
 </template>
 
 <script setup lang="ts">

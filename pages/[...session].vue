@@ -4,9 +4,7 @@ const socket = useSocket()
 const url = computed(() => {
   return window.location.host + '/session/' + socket.session.value.id
 })
-const copyUrlToClipboard = () => {
-  navigator.clipboard.writeText(window.location.href)
-}
+
 
 const selectedCard = computed(() => {
   return socket.session.value.players.find(player => player.id === window.sessionStorage.getItem('id'))?.card
@@ -25,21 +23,16 @@ const toggleVisibility = () => {
   <div class="session">
     <div>
       <div class="share-label">SHARE THIS SESSION</div>
-      <button v-if="socket.session.value.id" class="share-button" @click="copyUrlToClipboard"> {{ url }}
-        <ShareIcon />
-      </button>
-      <button v-else class="share-button share-button--disabled"> loading . . .
-        <ShareIcon />
-      </button>
+      <ShareButton v-if="socket.session.value" />
     </div>
     <div class="players">
       <div v-for="player in socket.session.value.players" :key="player.id">
         <Player :player="player" :is-visible="socket.session.value.cardsVisible" />
       </div>
     </div>
-    <ToggleButton @click="toggleVisibility" :is-visible="socket.session.value.cardsVisible"
-      :text="socket.session.value.cardsVisible ? 'NEW ROUND' : 'REVEAL CARDS'" />
     <div class="voting-cards">
+      <ToggleButton @click="toggleVisibility" :is-visible="socket.session.value.cardsVisible"
+        :text="socket.session.value.cardsVisible ? 'NEW ROUND' : 'REVEAL CARDS'" />
       <VotingCards @vote="socket.vote" :selectedCard="selectedCard" />
     </div>
 
@@ -77,36 +70,8 @@ const toggleVisibility = () => {
 .share-label {
   font-size: 11px;
   font-weight: bold;
-  color: darkgrey
-}
-
-.share-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 20px;
-  background-color: #f2f2f2;
-  border: 2px solid #02b5db;
-  border-radius: 10px;
-  cursor: pointer;
-  color: #011e74;
-  fill: #011e74;
-  font-size: 16px;
-  font-weight: bold;
-  letter-spacing: 0.6px;
-  padding: 10px 10px;
-  width: 320px;
-}
-
-.share-button:hover {
-  background-color: #02b5db;
-  color: white;
-  fill: white;
-}
-
-.share-button:active {
-  outline: 2px solid #011e74;
-
+  color: darkgrey;
+  padding-left: 5px;
+  margin-bottom: 4px;
 }
 </style>

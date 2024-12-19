@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const name = ref('')
-const session = ref(window.location.pathname.split('/').pop())
+const session = ref(window.location.search.split('=')[1])
 const router = useRouter()
 
 function startSession() {
@@ -15,32 +15,49 @@ function startSession() {
 
 <template>
   <DefaultLayout>
-    <h2>START ESTIMATION SESSION</h2>
+    <div class="title">
+      <h1>JOIN ESTIMATION SESSION</h1>
+      <h2><span>(</span>session id: {{ session }}<span>)</span></h2>
+    </div>
     <form @submit.prevent="startSession">
       <div>
         <!-- this works since vue3.4! /> -->
-        <BaseInput v-model:inputValue="name" placeholder="NAME" />
+        <BaseInput v-model:inputValue="name" placeholder="NAME" autofocus />
       </div>
-      <BaseButton :text="'START'" />
+      <BaseButton :text="'JOIN'" />
     </form>
   </DefaultLayout>
 </template>
 
 <style scoped>
-h2 {
+h1 {
   font-size: 18px;
-  font-weight: 200;
-  margin-bottom: 2rem;
+  font-weight: 400;
   color: #71777e;
   text-align: center;
+  margin-bottom: 0;
+}
+
+h2 {
+  font-size: 12px;
+  font-weight: 200;
+  margin-top: 0;
+  margin-bottom: 2rem;
+  color: #818991;
+  text-align: center;
+
+  &>span {
+    font-size: 9px;
+  }
 }
 
 form {
+  width: 100%;
+
   &>div {
     display: flex;
     flex-direction: row;
     margin-bottom: 1rem;
-    width: 100%;
   }
 }
 </style>

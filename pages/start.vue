@@ -15,11 +15,11 @@ function startSession() {
 
 <template>
   <DefaultLayout>
-    <h2>START ESTIMATION SESSION</h2>
+    <h1>START ESTIMATION SESSION</h1>
     <form @submit.prevent="startSession">
       <div>
         <!-- this works since vue3.4! /> -->
-        <BaseInput v-model:inputValue="name" placeholder="YOUR NAME" />
+        <BaseInput v-model:inputValue="name" placeholder="NAME" autofocus />
       </div>
       <BaseButton :text="'START'" />
     </form>
@@ -27,12 +27,12 @@ function startSession() {
 </template>
 
 <style scoped>
-h2 {
+h1 {
   font-size: 18px;
-  font-weight: 200;
-  margin-bottom: 2rem;
+  font-weight: 400;
   color: #71777e;
   text-align: center;
+  margin-bottom: 2rem;
 }
 
 form {

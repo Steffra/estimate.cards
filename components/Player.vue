@@ -32,6 +32,7 @@ const card = ref<HTMLElement | null>(null);
 const seed = Math.random();
 
 watch(() => player.card, (newCard, oldCard) => {
+    console.log('watcher triggered', newCard, oldCard);
     cancelAnimation();
     if (isOwnCard && newCard) {
         animateOwnCardSelection();
@@ -81,7 +82,7 @@ const animateOwnCardSelection = () => {
     const animationLength = 0.75
     runningAnimation = animate(
         card.value!,
-        { transform: "rotateZ(5deg) translateY(-10px) rotateY(155deg)" },
+        { transform: "rotateZ(5deg) translateY(-10px) rotateY(125deg)" },
         { duration: animationLength, ease: cubicBezier(.06, .9, .62, .99) }
     )
     runningAnimation.then(() => {
@@ -97,6 +98,7 @@ const animateOwnCardSelection = () => {
 };
 
 const animateReveal = () => {
+    cancelAnimation();
     animateCardSelection();
     const bounce = 0.2 + seed * 0.4;
     const duration = 0.5 + seed * 1;
@@ -119,7 +121,6 @@ const animateHide = () => {
 const cancelAnimation = () => {
     if (runningAnimation) {
         runningAnimation.cancel();
-        runningAnimation = null;
     }
 };
 </script>
@@ -131,10 +132,11 @@ const cancelAnimation = () => {
     align-items: center;
     justify-content: center;
     min-width: 40px;
-    @media (width >= 480px) {
+
+    @media (width >=480px) {
         min-width: 50px;
     }
-  }
+}
 
 
 .flip-card-container {
@@ -161,7 +163,7 @@ const cancelAnimation = () => {
     height: 100%;
     border-radius: 12px;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
-    border: 4px solid #011e74;
+    border: 4px double #011e74;
 
     position: absolute;
     overflow: hidden;
@@ -211,7 +213,7 @@ const cancelAnimation = () => {
 }
 
 .voted .card-back {
-    border: 4px solid #f03d13;
+    border: 2px solid #f03d13;
 
 }
 
