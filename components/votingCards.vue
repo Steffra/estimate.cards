@@ -8,22 +8,33 @@
 </template>
 
 <script setup lang="ts">
-const emit = defineEmits(['vote'])
-const props = defineProps<{
-    selectedCard: string | undefined | null
-}>()
-const vote = (value: string) => {
-    emit('vote', value)
+type VotingCard = {
+    value: string,
+    selected: boolean
 }
+const emit = defineEmits(['vote'])
 
-const cards = computed(() => [
-    { value: "1", selected: props.selectedCard == "1" },
-    { value: "2", selected: props.selectedCard == "2" },
-    { value: "3", selected: props.selectedCard == "3" },
-    { value: "5", selected: props.selectedCard == "5" },
-    { value: "8", selected: props.selectedCard == "8" },
-    { value: "13", selected: props.selectedCard == "13" }
+const cards = ref<Array<VotingCard>>([
+    { value: "1", selected: false },
+    { value: "2", selected: false },
+    { value: "3", selected: false },
+    { value: "5", selected: false },
+    { value: "8", selected: false },
+    { value: "13", selected: false }
 ])
+
+const vote = (selectedCard: string) => {
+    emit('vote', selectedCard)
+    if (selectedCard == cards.value.find(card => card.selected)?.value) {
+        cards.value.forEach(card => {
+            card.selected = false
+        })
+        return;
+    }
+    cards.value.forEach(card => {
+        card.selected = card.value === selectedCard
+    })
+}
 
 </script>
 
