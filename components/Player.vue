@@ -82,13 +82,13 @@ const animateOwnCardSelection = () => {
     const animationLength = 0.75
     runningAnimation = animate(
         card.value!,
-        { transform: "rotateZ(5deg) translateY(-10px) rotateY(125deg)" },
+        { transform: "rotateZ(5deg) translateY(-10px) rotateY(135deg) scale(1.2)" },
         { duration: animationLength, ease: cubicBezier(.06, .9, .62, .99) }
     )
     runningAnimation.then(() => {
         runningAnimation = animate(
             card.value!,
-            { transform: "rotateZ(0deg) translateY(0px) rotateY(0deg)" },
+            { transform: "rotateZ(0deg) translateY(0px) rotateY(0deg) scale(1)" },
             { duration: animationLength, ease: cubicBezier(.06, .9, .62, .99) }
         );
     });
@@ -132,18 +132,24 @@ const cancelAnimation = () => {
     align-items: center;
     justify-content: center;
     min-width: 40px;
+    max-width: 85px;
 
     @media (width >=480px) {
         min-width: 50px;
+        max-width: 100px;
     }
 }
 
 
 .flip-card-container {
-    width: 100px;
-    height: 150px;
-
+    width: 85px;
+    height: 130px;
     perspective: 1000px;
+
+    @media (width >=480px) {
+        width: 100px;
+        height: 150px;
+    }
 }
 
 .flip-card {
@@ -222,19 +228,27 @@ const cancelAnimation = () => {
     font-weight: normal;
     color: #011e74;
     text-align: center;
-    max-width: 90px;
+    max-width: 75px;
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     /* number of lines to show */
     line-clamp: 2;
     -webkit-box-orient: vertical;
-    height: 50px;
+    height: 36px;
     text-wrap: balance;
     word-wrap: break-word;
+
+    @media (width >=480px) {
+        max-width: 90px;
+    }
 }
 
 .background-logo {
-    width: 90px;
+    width: 75px;
+
+    @media (width >=480px) {
+        width: 90px;
+    }
 }
 </style>

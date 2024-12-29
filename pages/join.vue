@@ -17,7 +17,7 @@ function startSession() {
   <DefaultLayout>
     <div class="title">
       <h1>JOIN ESTIMATION SESSION</h1>
-      <h2><span>(</span>session id: {{ session }}<span>)</span></h2>
+      <h2><span>(</span>session: {{ session }}<span>)</span></h2>
     </div>
     <form @submit.prevent="startSession">
       <div>

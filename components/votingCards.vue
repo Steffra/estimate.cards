@@ -36,10 +36,16 @@ const cards = computed(() => [
 
 .voting-cards {
     display: flex;
-    gap: 10px;
+    gap: 8px;
     justify-content: center;
     flex-wrap: wrap;
     max-width: 600px;
     transition: all 1.5s;
+
+    @media (width >=480px) {
+        gap: 10px;
+
+    }
+
 }
 </style>
