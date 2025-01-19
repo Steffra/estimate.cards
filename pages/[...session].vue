@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import { useSocket } from '~/composables/useSocket'
-
+//useTemplateRef is new in vue 3.5 !
+//https://medium.com/@shuhan.chan08/basic-usage-of-vue-3-5-usetemplateref-4b8d7a89bf7d
+const votingCards = useTemplateRef('votingCards')
 const socket = useSocket()
-
-const selectedCard = computed(() => {
-  return socket.session.value.players.find(player => player.id === window.sessionStorage.getItem('id'))?.card
-})
 
 const toggleVisibility = () => {
   if (socket.session.value.cardsVisible) {
@@ -27,6 +25,13 @@ watch(() => socket.session.value.players, async () => {
   console.log(newFlexItemsInfo)
 
   aminateFlexItems(oldFlexItemsInfo, newFlexItemsInfo)
+})
+
+watch(() => socket.session.value.cardsVisible, (newValue) => {
+  if (newValue && votingCards.value) {
+    //call resetSelection thats defineExposed
+    votingCards.value.resetSelection()
+  }
 })
 
 interface FlexItemInfo {
@@ -92,10 +97,9 @@ function aminateFlexItems(
       <Player v-for="player in socket.session.value.players" :key="player.id" :player="player"
         :is-visible="socket.session.value.cardsVisible" />
     </div>
+    <ToggleButton @click="toggleVisibility" :cards-visible="socket.session.value.cardsVisible" />
     <div class="voting-cards">
-      <ToggleButton @click="toggleVisibility" :is-visible="socket.session.value.cardsVisible"
-        :text="socket.session.value.cardsVisible ? 'NEW ROUND' : 'REVEAL CARDS'" />
-      <VotingCards @vote="socket.vote" :selectedCard="selectedCard" />
+      <VotingCards @vote="socket.vote" ref="votingCards" :is-voting-disabled="socket.session.value.cardsVisible" />
     </div>
 
   </div>

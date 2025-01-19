@@ -2,6 +2,9 @@ import { type Session } from '../types/types'
 import { nanoid } from 'nanoid'
 
 export function useSocket() {
+    if (typeof window === 'undefined') {
+        return
+      }
       const protocol= window.location.protocol === 'https:' ? 'wss' : 'ws'
       const sessionid = window.location.pathname.split('/').pop()
       const name = window.sessionStorage.getItem('name')

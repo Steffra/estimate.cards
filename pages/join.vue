@@ -1,12 +1,15 @@
 <script setup lang="ts">
 const name = ref('')
-const session = ref(window.location.search.split('=')[1])
+const sessionFromUrl = ref('      ')
 const router = useRouter()
-
+const sessionInput = ref('')
+onBeforeMount(() => {
+  sessionFromUrl.value = window ? window.location.search.split('=')[1] : ''
+})
 function startSession() {
   window.sessionStorage.setItem('name', name.value)
-  if (session.value) {
-    router.push(`/session/${session.value}?name=${name.value}`)
+  if (sessionFromUrl.value) {
+    router.push(`/session/${sessionFromUrl.value}?name=${name.value}`)
   } else {
     router.push(`/session/new?name=${name.value}`)
   }
@@ -17,12 +20,14 @@ function startSession() {
   <DefaultLayout>
     <div class="title">
       <h1>JOIN ESTIMATION SESSION</h1>
-      <h2><span>(</span>session: {{ session }}<span>)</span></h2>
+      <h2 v-if="sessionFromUrl"><span>(</span>session: {{ sessionFromUrl }}<span>)</span></h2>
     </div>
     <form @submit.prevent="startSession">
       <div>
         <!-- this works since vue3.4! /> -->
-        <BaseInput v-model:inputValue="name" placeholder="NAME" autofocus />
+        <BaseInput v-if="!sessionFromUrl" v-model:inputValue="sessionInput" placeholder="SESSION"
+          :autofocus="sessionFromUrl != ''" label="Session id" />
+        <BaseInput v-model:inputValue="name" placeholder="NAME" label="Your name" :autofocus="sessionFromUrl === ''" />
       </div>
       <BaseButton :text="'JOIN'" />
     </form>
@@ -56,8 +61,9 @@ form {
 
   &>div {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin-bottom: 1rem;
+    gap: 12px;
   }
 }
 </style>

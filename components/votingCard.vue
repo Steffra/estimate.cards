@@ -43,6 +43,12 @@ const { value, selected } = defineProps<{
         color: white;
 
     }
+
+    &:disabled {
+        background-color: #e3e3e3;
+        color: #b3b3b3;
+        cursor: not-allowed;
+    }
 }
 
 .voting-card.selected {

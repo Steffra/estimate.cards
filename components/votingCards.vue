@@ -2,7 +2,7 @@
     <div class="voting-cards-wrapper">
         <div class="voting-cards">
             <voting-card v-for="card in cards" :key="card.value" :value="card.value" :selected="card.selected"
-                @click="vote(card.value)" />
+                @click="vote(card.value)" :disabled="props.isVotingDisabled" />
         </div>
     </div>
 </template>
@@ -12,7 +12,12 @@ type VotingCard = {
     value: string,
     selected: boolean
 }
+
+const props = defineProps<{
+    isVotingDisabled: boolean
+}>()
 const emit = defineEmits(['vote'])
+
 
 const cards = ref<Array<VotingCard>>([
     { value: "1", selected: false },
@@ -24,18 +29,24 @@ const cards = ref<Array<VotingCard>>([
 ])
 
 const vote = (selectedCard: string) => {
+    if (props.isVotingDisabled) return;
     emit('vote', selectedCard)
     if (selectedCard == cards.value.find(card => card.selected)?.value) {
-        cards.value.forEach(card => {
-            card.selected = false
-        })
+        resetSelection()
         return;
     }
     cards.value.forEach(card => {
         card.selected = card.value === selectedCard
     })
 }
-
+const resetSelection = () => {
+    cards.value.forEach(card => {
+        card.selected = false
+    })
+}
+defineExpose({
+    resetSelection: resetSelection,
+})
 </script>
 
 <style scoped>
