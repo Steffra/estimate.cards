@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const name = ref('')
-const sessionFromUrl = ref('      ')
+const sessionFromUrl = ref('initial')
 const router = useRouter()
 const sessionInput = ref('')
 onBeforeMount(() => {

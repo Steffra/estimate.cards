@@ -13,6 +13,7 @@ const { text, secondary } = defineProps<{
 
 <style scoped>
 button {
+
     background-color: #011e74;
     color: white;
     border: none;
@@ -27,18 +28,25 @@ button {
     &.secondary {
         background-color: #f2f2f2;
         color: #011e74;
-        border: 2px solid #02b5db;
+        -webkit-box-shadow: inset 0px 0px 0px 2px #02b5db;
+        -moz-box-shadow: inset 0px 0px 0px 2px #02b5db;
+        box-shadow: inset 0px 0px 0px 2px #02b5db;
     }
 
-    &:hover {
+
+    &:active {
         background-color: #88d5f5;
         color: #00005f;
     }
 
-    &:active {
-        background-color: #bbe7f9;
-        color: #00005f;
+    /*hover effect only on devices with hover capability*/
+    @media(hover: hover) and (pointer: fine) {
+        &:hover {
+            background-color: #88d5f5;
+            color: #00005f;
+        }
     }
+
 
 
     @media (width >=480px) {

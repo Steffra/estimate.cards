@@ -1,5 +1,5 @@
 <template>
-    <BaseButton class="toggle-button" :text="cardsVisible ? 'NEW ROUND' : 'REVEAL CARDS'" />
+    <BaseButton class="toggle-button" :text="cardsVisible ? 'NEW ROUND' : 'REVEAL CARDS'" :secondary="cardsVisible" />
 </template>
 
 <script setup lang="ts">
