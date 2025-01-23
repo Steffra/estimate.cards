@@ -19,7 +19,7 @@ function startSession() {
     <form @submit.prevent="startSession">
       <div>
         <!-- this works since vue3.4! /> -->
-        <BaseInput v-model:inputValue="name" placeholder="NAME" autofocus />
+        <BaseInput v-model:inputValue="name" placeholder="NAME" label="Your name" autofocus />
       </div>
       <BaseButton :text="'START'" />
     </form>
