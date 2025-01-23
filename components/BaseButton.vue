@@ -46,15 +46,5 @@ button {
             color: #00005f;
         }
     }
-
-
-
-    @media (width >=480px) {
-        width: auto;
-        min-width: 250px;
-    }
-
-
-
 }
 </style>

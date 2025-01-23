@@ -29,7 +29,6 @@ watch(() => socket.session.value.players, async () => {
 
 watch(() => socket.session.value.cardsVisible, (newValue) => {
   if (newValue && votingCards.value) {
-    //call resetSelection thats defineExposed
     votingCards.value.resetSelection()
   }
 })

@@ -30,7 +30,7 @@ const { value, selected } = defineProps<{
 
     @media (width >=480px) {
         min-height: 6rem;
-        min-width: 4rem;
+        width: 4rem;
         font-size: 32px;
     }
 
