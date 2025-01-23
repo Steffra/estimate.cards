@@ -27,6 +27,8 @@ const { value, selected } = defineProps<{
     min-height: 4.5rem;
     min-width: 3rem;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+    /* this is needed because iOS Safari has predefiend styles for  buttons*/
+    padding: 0;
 
     @media (width >=480px) {
         min-height: 6rem;
