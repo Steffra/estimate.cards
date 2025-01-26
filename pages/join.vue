@@ -9,9 +9,9 @@ onBeforeMount(() => {
 function startSession() {
   window.sessionStorage.setItem('name', name.value)
   if (sessionFromUrl.value) {
-    router.push(`/session/${sessionFromUrl.value}?name=${name.value}`)
+    router.push(`/session/${sessionFromUrl.value}`)
   } else {
-    router.push(`/session/new?name=${name.value}`)
+    router.push(`/session/new`)
   }
 }
 </script>
