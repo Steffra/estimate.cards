@@ -1,8 +1,7 @@
 import { nanoid } from 'nanoid'
 import { Peer, Message} from 'crossws'
 import { type Session } from '../../types/types'
-
-const sessions: Session[] = []
+import sessions from "~/server/sessions"
 
 function findSessionById(sessionId: string): Session | undefined {
   return sessions.find(session => session.id === sessionId)
