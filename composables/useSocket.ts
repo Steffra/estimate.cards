@@ -23,7 +23,6 @@ export function useSocket() {
       }
       const id = ref(nanoid(32))
       window.sessionStorage.setItem('id', id.value)
-      console.log(sessionid)
       const {data, send} = useWebSocket(`${protocol}://${location.host}/api/websocket?session=${sessionid}&name=${name}&id=${id.value}`)
       const session = ref<Session>({ id: '', cardsVisible: false, players: [] })
       

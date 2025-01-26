@@ -41,7 +41,7 @@ button {
     }
 
 
-    &:active {
+    &:active:enabled {
         background-color: #88d5f5;
         color: #00005f;
     }

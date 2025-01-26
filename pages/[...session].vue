@@ -12,7 +12,9 @@ const toggleVisibility = () => {
     socket.revealCards()
   }
 }
-
+const isRevealEnabled = computed(() =>
+  socket.session.value.players.find(player => player.card != '' && player.card != null)
+)
 watch(() => socket.session.value.players, async () => {
   const container = document.querySelector('.players')
   if (!container) return;
@@ -83,6 +85,7 @@ function aminateFlexItems(
     )
   }
 }
+
 </script>
 
 <template>
@@ -96,7 +99,8 @@ function aminateFlexItems(
       <Player v-for="player in socket.session.value.players" :key="player.id" :player="player"
         :is-visible="socket.session.value.cardsVisible" />
     </div>
-    <ToggleButton @click="toggleVisibility" :cards-visible="socket.session.value.cardsVisible" />
+    <ToggleButton @click="toggleVisibility" :cards-visible="socket.session.value.cardsVisible"
+      :disabled="!isRevealEnabled" />
     <div class="voting-cards">
       <VotingCards @vote="socket.vote" ref="votingCards" :is-voting-disabled="socket.session.value.cardsVisible" />
     </div>
