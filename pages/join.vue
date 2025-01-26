@@ -25,9 +25,9 @@ function startSession() {
     <form @submit.prevent="startSession">
       <div>
         <!-- this works since vue3.4! /> -->
-        <BaseInput v-if="!sessionFromUrl" v-model:inputValue="sessionInput" placeholder="SESSION"
-          :autofocus="sessionFromUrl != ''" label="Session id" />
-        <BaseInput v-model:inputValue="name" placeholder="NAME" label="Your name" :autofocus="sessionFromUrl === ''" />
+        <BaseInput v-if="!sessionFromUrl" v-model:inputValue="sessionInput" placeholder="SESSION" label="Session id"
+          :autofocus="true" />
+        <BaseInput v-model:inputValue="name" placeholder="NAME" label="Your name" :autofocus="sessionFromUrl != ''" />
       </div>
       <BaseButton :text="'JOIN'" />
     </form>
