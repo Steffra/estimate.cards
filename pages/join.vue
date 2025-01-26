@@ -5,13 +5,30 @@ const router = useRouter()
 const sessionInput = ref('')
 onBeforeMount(() => {
   sessionFromUrl.value = window ? window.location.search.split('=')[1] : ''
+  if (sessionFromUrl.value) {
+    fetch(`/api/session/${sessionFromUrl.value}`)
+      .then(response => {
+        if (!response.ok) {
+          window.location.href = '/'
+        }
+      })
+  }
+
 })
-function startSession() {
+async function startSession() {
   window.sessionStorage.setItem('name', name.value)
+
   if (sessionFromUrl.value) {
     router.push(`/session/${sessionFromUrl.value}`)
   } else {
-    router.push(`/session/new`)
+    fetch(`/api/session/${sessionInput.value}`)
+      .then(response => {
+        if (response.ok) {
+          router.push(`/session/${sessionInput.value}`)
+        } else {
+          alert('Session not found')
+        }
+      })
   }
 }
 </script>

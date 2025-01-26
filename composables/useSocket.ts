@@ -8,10 +8,12 @@ export function useSocket() {
       const protocol= window.location.protocol === 'https:' ? 'wss' : 'ws'
       const sessionid = window.location.pathname.split('/').pop()
       const name = window.sessionStorage.getItem('name')
-      if (window.location.pathname.split('/').pop() === 'session') {
-        window.location.href = '/'
-        return
-      }
+      fetch(`/api/session/${sessionid}`)
+      .then(response => {
+        if (!response.ok) {
+          window.location.href = '/'
+        }
+      })
       
       if (!name) {
         if(sessionid){
@@ -29,10 +31,6 @@ export function useSocket() {
       
       watch(data, (newValue) => {
         session.value = JSON.parse(newValue)
-      
-        if (session.value.id !== sessionid) {
-          window.history.pushState({}, '', `/session/${session.value.id}`)
-        }
       })
 
       const vote = (card: string) => {
