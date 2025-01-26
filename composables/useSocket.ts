@@ -8,6 +8,11 @@ export function useSocket() {
       const protocol= window.location.protocol === 'https:' ? 'wss' : 'ws'
       const sessionid = window.location.pathname.split('/').pop()
       const name = window.sessionStorage.getItem('name')
+      if (window.location.pathname.split('/').pop() === 'session') {
+        window.location.href = '/'
+        return
+      }
+      
       if (!name) {
         if(sessionid){
             window.sessionStorage.setItem('session', sessionid)
@@ -18,6 +23,7 @@ export function useSocket() {
       }
       const id = ref(nanoid(32))
       window.sessionStorage.setItem('id', id.value)
+      console.log(sessionid)
       const {data, send} = useWebSocket(`${protocol}://${location.host}/api/websocket?session=${sessionid}&name=${name}&id=${id.value}`)
       const session = ref<Session>({ id: '', cardsVisible: false, players: [] })
       

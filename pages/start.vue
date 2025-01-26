@@ -1,15 +1,12 @@
 <script setup lang="ts">
 const name = ref('')
-const session = ref(window.location.pathname.split('/').pop())
 const router = useRouter()
 
 function startSession() {
+  console.log('name', name.value)
+  if (!name.value) return
   window.sessionStorage.setItem('name', name.value)
-  if (session.value) {
-    router.push(`/session/${session.value}?name=${name.value}`)
-  } else {
-    router.push(`/session/new?name=${name.value}`)
-  }
+  router.push(`/session/new?name=${name.value}`)
 }
 </script>
 
