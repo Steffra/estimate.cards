@@ -29,7 +29,7 @@ function startSession() {
           :autofocus="true" />
         <BaseInput v-model:inputValue="name" placeholder="NAME" label="Your name" :autofocus="sessionFromUrl != ''" />
       </div>
-      <BaseButton :text="'JOIN'" />
+      <BaseButton :disabled="name === ''" :text="'JOIN'" />
     </form>
   </DefaultLayout>
 </template>
@@ -38,7 +38,7 @@ function startSession() {
 h1 {
   font-size: 18px;
   font-weight: 400;
-  color: #71777e;
+  color: #011e74;
   text-align: center;
   margin-bottom: 0;
 }

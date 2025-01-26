@@ -1,13 +1,14 @@
 <template>
-    <button :class="{ 'secondary': secondary }">{{ text }}
+    <button :disabled="disabled" :class="{ 'secondary': secondary }">{{ text }}
         <slot></slot>
     </button>
 </template>
 
 <script setup lang="ts">
-const { text, secondary } = defineProps<{
+const { text, secondary = false, disabled = false } = defineProps<{
     text: string
     secondary?: boolean
+    disabled?: boolean
 }>()
 </script>
 
@@ -33,6 +34,12 @@ button {
         box-shadow: inset 0px 0px 0px 2px #02b5db;
     }
 
+    &:disabled {
+        background-color: #e3e3e3;
+        color: #b3b3b3;
+        cursor: not-allowed;
+    }
+
 
     &:active {
         background-color: #88d5f5;
@@ -41,7 +48,7 @@ button {
 
     /*hover effect only on devices with hover capability*/
     @media(hover: hover) and (pointer: fine) {
-        &:hover {
+        &:hover:enabled {
             background-color: #88d5f5;
             color: #00005f;
         }
