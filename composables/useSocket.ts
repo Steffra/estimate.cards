@@ -20,6 +20,7 @@ export function useSocket() {
         }else{
             window.location.href = '/join'
         }
+        return
       }
       const id = ref(nanoid(32))
       window.sessionStorage.setItem('id', id.value)
