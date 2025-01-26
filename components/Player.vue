@@ -92,7 +92,7 @@ const animateOwnCardSelection = () => {
             { duration: animationLength, ease: cubicBezier(.06, .9, .62, .99) }
         ]
     ]
-    //something is wrong with the typing, but it works
+    // @ts-ignore something is wrong with the typing in Motion
     runningAnimation = animate(animationSequence)
     runningAnimation.then(() => {
         runningAnimation = null;
