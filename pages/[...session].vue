@@ -3,7 +3,7 @@ import { useSocket } from '~/composables/useSocket'
 //useTemplateRef is new in vue 3.5 !
 //https://medium.com/@shuhan.chan08/basic-usage-of-vue-3-5-usetemplateref-4b8d7a89bf7d
 const votingCards = useTemplateRef('votingCards')
-const socket = useSocket()
+const socket = useSocket()!
 
 const toggleVisibility = () => {
   if (socket.session.value.cardsVisible) {
