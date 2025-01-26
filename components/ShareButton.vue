@@ -1,7 +1,8 @@
 <template>
-    <Popper :show="showTooltip" :offsetSkid="10" :offsetDistance="8">
+    <Popper :show="showTooltip" :offsetSkid="'10'" :offsetDistance="'8'">
         <BaseButton text="SHARE SESSION" secondary class="share-button" @click="copyUrlToClipboard">
-        </BaseButton> <template #content :is-open>
+        </BaseButton>
+        <template #content :is-open>
             <div class="tooltip-content">
                 URL copied to clipboard!
                 <ShareIcon />
