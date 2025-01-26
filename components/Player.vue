@@ -32,7 +32,6 @@ const card = ref<HTMLElement | null>(null);
 const seed = Math.random();
 
 watch(() => player.card, (newCard, oldCard) => {
-    console.log('watcher triggered', newCard, oldCard);
     cancelAnimation();
     if (isOwnCard && newCard) {
         animateOwnCardSelection();
@@ -80,21 +79,25 @@ const animateCardSelection = () => {
 
 const animateOwnCardSelection = () => {
     const animationLength = 0.75
-    runningAnimation = animate(
-        card.value!,
-        { transform: "rotateZ(5deg) translateY(-10px) rotateY(135deg) scale(1.2)" },
-        { duration: animationLength, ease: cubicBezier(.06, .9, .62, .99) }
-    )
-    runningAnimation.then(() => {
-        runningAnimation = animate(
+
+    const animationSequence = [
+        [
+            card.value!,
+            { transform: "rotateZ(5deg) translateY(-10px) rotateY(135deg) scale(1.2)" },
+            { duration: animationLength, ease: cubicBezier(.06, .9, .62, .99) }
+        ],
+        [
             card.value!,
             { transform: "rotateZ(0deg) translateY(0px) rotateY(0deg) scale(1)" },
             { duration: animationLength, ease: cubicBezier(.06, .9, .62, .99) }
-        );
-    });
+        ]
+    ]
+    //something is wrong with the typing, but it works
+    runningAnimation = animate(animationSequence)
     runningAnimation.then(() => {
         runningAnimation = null;
     });
+
 };
 
 const animateReveal = () => {
