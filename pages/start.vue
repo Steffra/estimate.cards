@@ -3,7 +3,6 @@ const name = ref('')
 const router = useRouter()
 
 function startSession() {
-  console.log('name', name.value)
   if (!name.value) return
   window.sessionStorage.setItem('name', name.value)
   router.push(`/session/new`)

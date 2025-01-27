@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useSocket } from '~/composables/useSocket'
+import { nanoid } from 'nanoid'
 //useTemplateRef is new in vue 3.5 !
 //https://medium.com/@shuhan.chan08/basic-usage-of-vue-3-5-usetemplateref-4b8d7a89bf7d
 const votingCards = useTemplateRef('votingCards')
@@ -9,8 +10,28 @@ const router = useRouter()
 onBeforeMount(() => {
   const name = window.sessionStorage.getItem('name')
   const sessionid = window.location.pathname.split('/').pop()
+  if (sessionid !== 'new') {
+    fetch(`/api/session/${sessionid}`)
+      .then(response => {
+        if (!response.ok) {
+          window.location.href = '/'
+        }
+      })
+  }
+
+  if (!name) {
+    if (sessionid) {
+      window.sessionStorage.setItem('session', sessionid)
+      window.location.href = '/join' + "?session=" + sessionid
+    } else {
+      window.location.href = '/join'
+    }
+  }
+
   if (sessionid && name) {
-    connect(sessionid, name)
+    const playerId = nanoid(32)
+    window.sessionStorage.setItem('id', playerId)
+    connect(sessionid, name, playerId)
   } else {
     router.push(`/`)
   }
