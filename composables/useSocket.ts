@@ -1,22 +1,13 @@
 import { type Session } from '../types/types'
 import { nanoid } from 'nanoid'
 
+let socket: {data: Ref<string | null>, send: (message: string) => void} = {
+    data: ref(null),
+    send: () => {}
+}
 
 export function useSocket() {
-    const connect = (sessionid:string, name:string) => {
-        const protocol= window.location.protocol === 'https:' ? 'wss' : 'ws'
-        const {data, send} = useWebSocket(`${protocol}://${location.host}/api/websocket?session=${sessionid}&name=${name}&id=${id.value}`)
-        socket = { data, send }
-    }
-    
-    if (typeof window === 'undefined') {
-        return
-    }
 
-    let socket: {data: Ref<string | null>, send: (message: string) => void} = {
-        data: ref(null),
-        send: () => {}
-    }
 
     const sessionid = window.location.pathname.split('/').pop()
     if(sessionid !=='new'){
@@ -44,14 +35,24 @@ export function useSocket() {
     window.sessionStorage.setItem('id', id.value)
    
     const session = ref<Session>({ id: '', cardsVisible: false, players: [] })
-    connect(sessionid!, name)   
-    watch(socket.data, (newValue) => {
-        session.value = JSON.parse(newValue!)
-        if(sessionid === 'new'){
-            window.history.replaceState(null, '', '/session/' + session.value.id)
-        }
-    })
 
+    const connect = (sessionid:string, name:string) => {
+        const protocol= window.location.protocol === 'https:' ? 'wss' : 'ws'
+        socket = useWebSocket(`${protocol}://${location.host}/api/websocket?session=${sessionid}&name=${name}&id=${id.value}`)
+        initWatcher();
+    }
+
+    const initWatcher = () => {
+        watch(socket.data, (newValue) => {
+            console.log('value cahnged')
+            console.log(newValue)
+            session.value = JSON.parse(newValue!)
+            if(sessionid === 'new'){
+                window.history.replaceState(null, '', '/session/' + session.value.id)
+            }
+        })
+    }
+    
     const vote = (card: string) => {
         if (session.value.cardsVisible) {
         return
@@ -72,6 +73,6 @@ export function useSocket() {
     }
 
     return {
-        session, vote, revealCards, reset
+        connect, session, vote, revealCards, reset
     };
 }

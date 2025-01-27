@@ -3,19 +3,31 @@ import { useSocket } from '~/composables/useSocket'
 //useTemplateRef is new in vue 3.5 !
 //https://medium.com/@shuhan.chan08/basic-usage-of-vue-3-5-usetemplateref-4b8d7a89bf7d
 const votingCards = useTemplateRef('votingCards')
-const socket = useSocket()!
+const { connect, session, reset, revealCards, vote } = useSocket()!
+const router = useRouter()
+
+onBeforeMount(() => {
+  const name = window.sessionStorage.getItem('name')
+  const sessionid = window.location.pathname.split('/').pop()
+  if (sessionid && name) {
+    connect(sessionid, name)
+  } else {
+    router.push(`/`)
+  }
+})
 
 const toggleVisibility = () => {
-  if (socket.session.value.cardsVisible) {
-    socket.reset()
+  if (session.value.cardsVisible) {
+    reset()
   } else {
-    socket.revealCards()
+    revealCards()
   }
 }
 const isRevealEnabled = computed(() =>
-  socket.session.value.players.find(player => player.card != '' && player.card != null)
+  session.value.players.find(player => player.card != '' && player.card != null)
 )
-watch(() => socket.session.value.players, async () => {
+
+watch(() => session.value.players, async () => {
   const container = document.querySelector('.players')
   if (!container) return;
   const oldFlexItemsInfo = getFlexItemsInfo(container)
@@ -29,7 +41,7 @@ watch(() => socket.session.value.players, async () => {
   aminateFlexItems(oldFlexItemsInfo, newFlexItemsInfo)
 })
 
-watch(() => socket.session.value.cardsVisible, (newValue) => {
+watch(() => session.value.cardsVisible, (newValue) => {
   if (newValue && votingCards.value) {
     votingCards.value.resetSelection()
   }
@@ -91,18 +103,16 @@ function aminateFlexItems(
 <template>
   <div class="session">
     <div>
-      <div class="share-label">SHARE THIS SESSION <span>({{ socket.session.value.id }})</span></div>
-      <ShareButton v-if="socket.session.value" />
+      <div class="share-label">SHARE THIS SESSION <span>({{ session.id }})</span></div>
+      <ShareButton v-if="session" />
 
     </div>
     <div class="players">
-      <Player v-for="player in socket.session.value.players" :key="player.id" :player="player"
-        :is-visible="socket.session.value.cardsVisible" />
+      <Player v-for="player in session.players" :key="player.id" :player="player" :is-visible="session.cardsVisible" />
     </div>
-    <ToggleButton @click="toggleVisibility" :cards-visible="socket.session.value.cardsVisible"
-      :disabled="!isRevealEnabled" />
+    <ToggleButton @click="toggleVisibility" :cards-visible="session.cardsVisible" :disabled="!isRevealEnabled" />
     <div class="voting-cards">
-      <VotingCards @vote="socket.vote" ref="votingCards" :is-voting-disabled="socket.session.value.cardsVisible" />
+      <VotingCards @vote="vote" ref="votingCards" :is-voting-disabled="session.cardsVisible" />
     </div>
 
   </div>
