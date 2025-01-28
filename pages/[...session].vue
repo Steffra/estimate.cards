@@ -48,9 +48,7 @@ const toggleVisibility = () => {
     revealCards()
   }
 }
-const isRevealEnabled = computed(() =>
-  session.value.players.find(player => player.card != '' && player.card != null)
-)
+
 
 watch(() => session.value.players, async () => {
   const container = document.querySelector('.players')
@@ -123,10 +121,19 @@ function aminateFlexItems(
   }
 }
 
-const someButNotAllPlayersHaveVoted = computed(() => {
+const noPlayersVoted = computed(() => {
+  return session.value.players.every(player => player.card == '' || player.card == null)
+})
+
+const somePlayersVoted = computed(() => {
   return session.value.players.some(player => player.card != '' && player.card != null) &&
     !session.value.players.every(player => player.card != '' && player.card != null)
 })
+
+const allPlayersVoted = computed(() =>
+  session.value.players.find(player => player.card != '' && player.card != null)
+)
+
 </script>
 
 <template>
@@ -139,8 +146,8 @@ const someButNotAllPlayersHaveVoted = computed(() => {
     <div class="players">
       <Player v-for="player in session.players" :key="player.id" :player="player" :is-visible="session.cardsVisible" />
     </div>
-    <ToggleButton @click="toggleVisibility" :cards-visible="session.cardsVisible" :disabled="!isRevealEnabled"
-      :some-players-ready="someButNotAllPlayersHaveVoted" />
+    <ToggleButton @click="toggleVisibility" :cards-visible="session.cardsVisible" :somePlayersVoted="somePlayersVoted"
+      :noPlayersVoted="noPlayersVoted" />
     <div class="voting-cards">
       <VotingCards @vote="vote" ref="votingCards" :is-voting-disabled="session.cardsVisible" />
     </div>

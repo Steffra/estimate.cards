@@ -1,12 +1,13 @@
 <template>
     <BaseButton class="toggle-button" :text="cardsVisible ? 'NEW ROUND' : 'REVEAL CARDS'"
-        :secondary="cardsVisible || somePlayersReady" />
+        :secondary="cardsVisible || somePlayersVoted" :disabled="noPlayersVoted" />
 </template>
 
 <script setup lang="ts">
-const { cardsVisible, somePlayersReady } = defineProps<{
+const { cardsVisible, somePlayersVoted, noPlayersVoted } = defineProps<{
     cardsVisible: boolean,
-    somePlayersReady: boolean
+    somePlayersVoted: boolean
+    noPlayersVoted: boolean
 }>()
 </script>
 
