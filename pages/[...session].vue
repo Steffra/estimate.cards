@@ -14,10 +14,8 @@ onBeforeMount(() => {
     fetch(`/api/session/${sessionid}`)
       .then(response => {
         if (response.ok) {
-          console.log('session exists')
           sessionExists.value = true
         } else {
-          console.log('session does not exist')
           window.location.href = '/'
         }
       })
