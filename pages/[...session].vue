@@ -6,14 +6,18 @@ import { nanoid } from 'nanoid'
 const votingCards = useTemplateRef('votingCards')
 const { connect, session, reset, revealCards, vote } = useSocket()!
 const router = useRouter()
-
+const sessionExists = ref(false)
 onBeforeMount(() => {
   const name = window.sessionStorage.getItem('name')
   const sessionid = window.location.pathname.split('/').pop()
   if (sessionid !== 'new') {
     fetch(`/api/session/${sessionid}`)
       .then(response => {
-        if (!response.ok) {
+        if (response.ok) {
+          console.log('session exists')
+          sessionExists.value = true
+        } else {
+          console.log('session does not exist')
           window.location.href = '/'
         }
       })
@@ -119,6 +123,10 @@ function aminateFlexItems(
   }
 }
 
+const someButNotAllPlayersHaveVoted = computed(() => {
+  return session.value.players.some(player => player.card != '' && player.card != null) &&
+    !session.value.players.every(player => player.card != '' && player.card != null)
+})
 </script>
 
 <template>
@@ -131,7 +139,8 @@ function aminateFlexItems(
     <div class="players">
       <Player v-for="player in session.players" :key="player.id" :player="player" :is-visible="session.cardsVisible" />
     </div>
-    <ToggleButton @click="toggleVisibility" :cards-visible="session.cardsVisible" :disabled="!isRevealEnabled" />
+    <ToggleButton @click="toggleVisibility" :cards-visible="session.cardsVisible" :disabled="!isRevealEnabled"
+      :some-players-ready="someButNotAllPlayersHaveVoted" />
     <div class="voting-cards">
       <VotingCards @vote="vote" ref="votingCards" :is-voting-disabled="session.cardsVisible" />
     </div>
