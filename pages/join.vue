@@ -1,10 +1,10 @@
 <script setup lang="ts">
 const name = ref('')
-const sessionFromUrl = ref('initial')
+const sessionFromUrl = ref('')
 const router = useRouter()
 const sessionInput = ref('')
+sessionFromUrl.value = router.currentRoute.value.query.session as string
 onBeforeMount(() => {
-  sessionFromUrl.value = window ? window.location.search.split('=')[1] : ''
   if (sessionFromUrl.value) {
     fetch(`/api/session/${sessionFromUrl.value}`)
       .then(response => {

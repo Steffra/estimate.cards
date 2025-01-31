@@ -135,10 +135,10 @@ const allPlayersVoted = computed(() =>
 </script>
 
 <template>
-  <div class="session">
+  <div v-if="session.id" class="session">
     <div>
       <div class="share-label">SHARE THIS SESSION <span>({{ session.id }})</span></div>
-      <ShareButton v-if="session" />
+      <ShareButton />
 
     </div>
     <div class="players">
