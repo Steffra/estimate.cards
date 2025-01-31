@@ -172,7 +172,7 @@ const cancelAnimation = () => {
     height: 100%;
     border-radius: 12px;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
-    border: 4px double #011e74;
+    border: 3px double #011e74;
 
     position: absolute;
     overflow: hidden;
@@ -222,7 +222,7 @@ const cancelAnimation = () => {
 }
 
 .voted .card-back {
-    border: 2px solid #f03d13;
+    border-color: #f03d13;
 
 }
 
