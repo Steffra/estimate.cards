@@ -44,6 +44,10 @@ export default defineWebSocketHandler({
     const params = new URLSearchParams(peer.request?.url?.split('?')[1])
     const playerName = params.get('name') || 'Unknown'
     const id = params.get('id')
+    console.log('Player connected', id, playerName)
+    if(!id || id =='null'){
+      peer.close(0,'Player id not found')
+    }
     let sessionid = params.get('session')
     if (!sessionid || !findSessionById(sessionid)) {
       sessionid = createSession()
