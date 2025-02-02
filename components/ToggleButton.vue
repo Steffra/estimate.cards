@@ -1,6 +1,6 @@
 <template>
     <BaseButton ref="toggleButton" class="toggle-button" :text="cardsVisible ? 'NEW ROUND' : 'REVEAL CARDS'"
-        :secondary="cardsVisible || somePlayersVoted" :disabled="noPlayersVoted" />
+        :secondary="cardsVisible || somePlayersVoted" :disabled="noPlayersVoted && !cardsVisible" />
 </template>
 
 <script setup lang="ts">
