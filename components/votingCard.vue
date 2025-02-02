@@ -16,7 +16,7 @@ const { value, selected } = defineProps<{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #eeeeee;
+    background-color: #fff;
     border-radius: 10px;
     border: none;
     cursor: pointer;
@@ -36,19 +36,18 @@ const { value, selected } = defineProps<{
         font-size: 32px;
     }
 
-    &:hover {
-        background-color: #e3e3e3;
+    &:hover:enabled {
+        border: 1px solid #00005f;
     }
 
-    &:active {
-        background-color: #00005f;
-        color: white;
-
+    &:active:enabled {
+        border: 1px solid #00005f;
+        box-shadow: inset 0 0 8px 2px rgba(0, 0, 0, 0.1);
     }
 
     &:disabled {
-        background-color: #e3e3e3;
-        color: #b3b3b3;
+        background-color: #f3f3f3;
+        color: #646668;
         cursor: not-allowed;
     }
 }
