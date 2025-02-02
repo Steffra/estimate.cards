@@ -24,4 +24,8 @@ body {
   padding: 0;
   letter-spacing: 0.2px;
 }
+
+* {
+  touch-action: manipulation;
+}
 </style>
