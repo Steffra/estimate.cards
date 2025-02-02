@@ -7,8 +7,8 @@ function findSessionById(sessionId: string): Session | undefined {
   return sessions.find(session => session.id === sessionId)
 }
 
-function addPlayerToSession(session: Session, id: string, playerName: string, peer: Peer) {
-  const player = { id, peer: peer.id, name: playerName, card: null }
+function addPlayerToSession(session: Session, id: string, playerName: string, peer: Peer, observer = false) {
+  const player = { id, peer: peer.id, name: playerName, card: null, observer }
   session.players.push(player)
   peer.subscribe(session.id)
   updateClients(peer)
@@ -67,8 +67,12 @@ export default defineWebSocketHandler({
   message(peer: Peer, message: Message) {
     const messageData = message.json() as { event: string, value: string }
     const event = messageData.event
+    const session = sessions.find(session => session.players.some(player => player.peer === peer.id))
+    if(!session){
+      return
+    }
+    const player = session.players.find(player => player.peer === peer.id)
     if(event === 'vote'){
-      const session = sessions.find(session => session.players.some(player => player.peer === peer.id))
       const player = session!.players.find(player => player.peer === peer.id)
       if(player!.card == messageData.value){
         player!.card = null
@@ -78,15 +82,20 @@ export default defineWebSocketHandler({
       updateClients(peer)
     }
     if(event === 'show'){
-      const session = sessions.find(session => session.players.some(player => player.peer === peer.id))
-      session!.cardsVisible = true
+      session.cardsVisible = true
       updateClients(peer)
     }
     if(event === 'reset'){
-      const session = sessions.find(session => session.players.some(player => player.peer === peer.id))
-      session!.cardsVisible = false
-      session!.players.forEach(player => player.card = null)
+      session.cardsVisible = false
+      session.players.forEach(player => player.card = null)
       updateClients(peer)
     }
+    if(event === 'toggleObserverMode'){
+        if(!player){  
+          return
+        }
+        player.observer = !player.observer
+        updateClients(peer)
+      }
   }
 })

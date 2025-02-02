@@ -4,7 +4,7 @@ import { nanoid } from 'nanoid'
 //useTemplateRef is new in vue 3.5 !
 //https://medium.com/@shuhan.chan08/basic-usage-of-vue-3-5-usetemplateref-4b8d7a89bf7d
 const votingCards = useTemplateRef('votingCards')
-const { connect, session, reset, revealCards, vote } = useSocket()!
+const { connect, session, reset, revealCards, vote, toggleObserverMode } = useSocket()!
 const router = useRouter()
 const sessionExists = ref(false)
 onBeforeMount(() => {
@@ -128,18 +128,24 @@ const somePlayersVoted = computed(() => {
     !session.value.players.every(player => player.card != '' && player.card != null)
 })
 
-const allPlayersVoted = computed(() =>
-  session.value.players.find(player => player.card != '' && player.card != null)
-)
 
+const isObserver = computed(() => {
+  return session.value.players.find(player => player.id == window.sessionStorage.getItem('id'))?.observer!
+})
+
+const toggleObserver = () => {
+  toggleObserverMode()
+}
 </script>
 
 <template>
   <div v-if="session.id" class="session">
-    <div>
-      <div class="share-label">SHARE THIS SESSION <span>({{ session.id }})</span></div>
-      <ShareButton />
-
+    <div class="header">
+      <div>
+        <div class="share-label">SHARE THIS SESSION <span>({{ session.id }})</span></div>
+        <ShareButton />
+      </div>
+      <BaseToggle :value="isObserver" @toggle="toggleObserver" text="OBSERVER MODE" />
     </div>
     <div class="players">
       <Player v-for="player in session.players" :key="player.id" :player="player" :is-visible="session.cardsVisible" />
@@ -161,6 +167,11 @@ const allPlayersVoted = computed(() =>
   padding: 1rem;
   box-sizing: border-box;
   min-height: 100dvh;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
 }
 
 .players {

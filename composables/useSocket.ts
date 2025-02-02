@@ -35,11 +35,15 @@ export function useSocket() {
         sendMessage('reset', '')
     }
 
-    const sendMessage = (event: 'show' | 'reset' | 'vote', value: string) => {
+    const toggleObserverMode = () => {
+        sendMessage('toggleObserverMode', '')
+    }
+
+    const sendMessage = (event: 'show' | 'reset' | 'vote' | 'toggleObserverMode', value: string) => {
         socket.send(JSON.stringify({ event, value }))
     }
 
     return {
-        connect, session, vote, revealCards, reset
+        connect, session, vote, revealCards, reset, toggleObserverMode
     };
 }
