@@ -95,6 +95,7 @@ export default defineWebSocketHandler({
           return
         }
         player.observer = !player.observer
+        player.card = null
         updateClients(peer)
       }
   }

@@ -34,7 +34,6 @@ defineEmits<{
     align-items: end;
     flex-direction: column;
     gap: 12px;
-    width: 200px;
 
     .text {
         font-size: 11px;

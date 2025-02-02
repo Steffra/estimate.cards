@@ -120,14 +120,13 @@ function aminateFlexItems(
 }
 
 const noPlayersVoted = computed(() => {
-  return session.value.players.every(player => player.card == '' || player.card == null)
+  return players.value.every(player => player.card == '' || player.card == null)
 })
 
 const somePlayersVoted = computed(() => {
-  return session.value.players.some(player => player.card != '' && player.card != null) &&
-    !session.value.players.every(player => player.card != '' && player.card != null)
+  return players.value.some(player => player.card != '' && player.card != null) &&
+    !players.value.every(player => player.card != '' && player.card != null)
 })
-
 
 const isObserver = computed(() => {
   return session.value.players.find(player => player.id == window.sessionStorage.getItem('id'))?.observer!
@@ -136,6 +135,10 @@ const isObserver = computed(() => {
 const toggleObserver = () => {
   toggleObserverMode()
 }
+
+const players = computed(() => {
+  return session.value.players.filter(p => !p.observer)
+})
 </script>
 
 <template>
@@ -148,11 +151,12 @@ const toggleObserver = () => {
       <BaseToggle :value="isObserver" @toggle="toggleObserver" text="OBSERVER MODE" />
     </div>
     <div class="players">
-      <Player v-for="player in session.players" :key="player.id" :player="player" :is-visible="session.cardsVisible" />
+      <Player v-for="player in players" :key="player.id" :player="player" :is-visible="session.cardsVisible" />
+      <div v-if="players.length == 0" class="empty-state">No players have joined yet</div>
     </div>
     <ToggleButton @click="toggleVisibility" :cards-visible="session.cardsVisible" :somePlayersVoted="somePlayersVoted"
       :noPlayersVoted="noPlayersVoted" />
-    <div class="voting-cards">
+    <div class="voting-cards" v-if="!isObserver">
       <VotingCards @vote="vote" ref="votingCards" :is-voting-disabled="session.cardsVisible" />
     </div>
 
@@ -212,5 +216,13 @@ const toggleObserver = () => {
     font-size: 10px;
     font-weight: 400;
   }
+}
+
+.empty-state {
+  font-size: 14px;
+  font-weight: 400;
+  color: darkgrey;
+  margin-top: 1rem;
+  justify-content: center;
 }
 </style>
