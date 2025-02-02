@@ -162,7 +162,6 @@ const cancelAnimation = () => {
 
     position: relative;
     transform-style: preserve-3d;
-    transition: .6s .1s;
     transform: scale(1);
 }
 
@@ -183,11 +182,6 @@ const cancelAnimation = () => {
     display: flex;
     justify-content: center;
     align-items: center;
-
-    transition: transform 0.5s;
-    -webkit-transition: border 200ms ease-in;
-    -moz-transition: border 200ms ease-in;
-    -o-transition: border 200ms ease-in;
 }
 
 .card-back {
@@ -207,10 +201,6 @@ const cancelAnimation = () => {
 
 .shadow {
     box-shadow: inset 0 0 8px 2px rgba(239 111 80 / 50%);
-    transition: transform 0.5s;
-    -webkit-transition: box-shadow 200ms ease-in;
-    -moz-transition: box-shadow 200ms ease-in;
-    -o-transition: box-shadow 200ms ease-in;
 }
 
 .card-front {
