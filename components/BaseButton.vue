@@ -31,7 +31,7 @@ button {
         color: #011e74;
         -webkit-box-shadow: inset 0px 0px 0px 2px #02b5db;
         -moz-box-shadow: inset 0px 0px 0px 2px #02b5db;
-        box-shadow: inset 0px 0px 0px 2px #02b5db;
+        box-shadow: inset 0px 0px 0px 2px #02b5db, 5px 5px 5px rgba(0, 0, 0, 0.1);
     }
 
     &:disabled {
