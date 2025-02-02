@@ -59,19 +59,20 @@ const animateCardSelection = () => {
     const duration = 0.1 + seed * 0.2;
     const stiffness = 400 + seed * 400;
 
-    runningAnimation = animate(
-        cardelement!,
-        { transform: "translateY(-10px) " },
-        { duration }
-
-    )
-    runningAnimation.then(() => {
-        runningAnimation = animate(
+    const animationSequence = [
+        [
+            cardelement!,
+            { transform: "translateY(-10px) " },
+            { duration }
+        ],
+        [
             cardelement!,
             { transform: "translateY(0px)" },
             { type: spring, stiffness, duration }
-        )
-    });
+        ]
+    ]
+    // @ts-ignore something is wrong with the typing in Motion
+    runningAnimation = animate(animationSequence)
     runningAnimation.then(() => {
         runningAnimation = null;
     });
