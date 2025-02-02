@@ -172,7 +172,7 @@ const cancelAnimation = () => {
     height: 100%;
     border-radius: 12px;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
-    border: 3px double #011e74;
+    border: 3px double #00005f;
 
     position: absolute;
     overflow: hidden;
@@ -221,7 +221,7 @@ const cancelAnimation = () => {
     font-size: 16px;
     line-height: 19px;
     font-weight: normal;
-    color: #011e74;
+    color: #00005f;
     text-align: center;
     max-width: 75px;
     overflow: hidden;

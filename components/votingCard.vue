@@ -20,8 +20,8 @@ const { value, selected } = defineProps<{
     border-radius: 10px;
     border: none;
     cursor: pointer;
-    color: #011e74;
-    fill: #011e74;
+    color: #00005f;
+    fill: #00005f;
     font-size: 24px;
     font-weight: bold;
     min-height: 4.5rem;
@@ -41,7 +41,7 @@ const { value, selected } = defineProps<{
     }
 
     &:active {
-        background-color: #011e74;
+        background-color: #00005f;
         color: white;
 
     }
@@ -54,7 +54,7 @@ const { value, selected } = defineProps<{
 }
 
 .voting-card.selected {
-    background-color: #011e74;
+    background-color: #00005f;
     color: white;
 }
 </style>

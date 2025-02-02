@@ -29,7 +29,7 @@
     @media (width >=480px) {
         background-color: white;
         box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
-        border-radius: 10px;
+        border-radius: 24px;
         padding: 0.5rem 2rem 2.5rem 2rem;
         margin-bottom: 35dvh;
     }

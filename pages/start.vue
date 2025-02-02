@@ -26,7 +26,7 @@ function startSession() {
 h1 {
   font-size: 18px;
   font-weight: 400;
-  color: #011e74;
+  color: #00005f;
   text-align: center;
   margin-bottom: 2rem;
 }

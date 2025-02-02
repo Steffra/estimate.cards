@@ -52,7 +52,7 @@ button.share-button {
     display: flex;
     align-items: center;
     justify-content: center;
-    fill: #011e74;
+    fill: #00005f;
     font-size: 14px;
     font-weight: 400;
 

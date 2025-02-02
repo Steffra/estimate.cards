@@ -9,7 +9,7 @@
 :root {
   --popper-theme-background-color: #eeeeee;
   --popper-theme-background-color-hover: #eeeeee;
-  --popper-theme-text-color: #011e74;
+  --popper-theme-text-color: #00005f;
   --popper-theme-border-width: 1px;
   --popper-theme-border-style: solid;
   --popper-theme-border-radius: 10px;
@@ -23,6 +23,7 @@ body {
   margin: 0;
   padding: 0;
   letter-spacing: 0.2px;
+  background-color: #f5f5f6;
 }
 
 * {
