@@ -170,11 +170,11 @@ const allPlayersVoted = computed(() =>
   justify-content: center;
   gap: 0 2rem;
   flex-grow: 1;
-  max-height: calc(100dvh - 12rem);
+  max-height: calc(100dvh - 15rem);
   overflow-y: scroll;
 
   @media (width >=480px) {
-    max-height: calc(100dvh - 14rem);
+    max-height: calc(100dvh - 17rem);
   }
 }
 

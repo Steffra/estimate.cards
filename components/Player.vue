@@ -229,6 +229,7 @@ const cancelAnimation = () => {
 
 .player-name {
     font-size: 16px;
+    line-height: 19px;
     font-weight: normal;
     color: #011e74;
     text-align: center;
