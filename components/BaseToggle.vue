@@ -1,6 +1,6 @@
 <template>
     <label for="toggleinput" class="wrapper">
-        <div class="text">
+        <div class="text" :class="{ 'text--active': value }">
             {{ text }}
         </div>
         <div class="toggle-container">
@@ -10,7 +10,7 @@
                 <div class=" toggle__slider">
                 </div>
             </div>
-            <span class="label">{{ inputValue ? 'ON' : 'OFF' }}</span>
+            <span class="label" :class="{ 'label--active': value }">{{ value ? 'ON' : 'OFF' }}</span>
         </div>
     </label>
 </template>
@@ -40,7 +40,13 @@ defineEmits<{
         font-weight: bold;
         color: darkgrey;
         cursor: pointer;
+
+        &.text--active {
+            color: #f03d13;
+        }
+
     }
+
 
     .toggle-container {
         display: flex;
@@ -52,6 +58,10 @@ defineEmits<{
             font-size: 11px;
             font-weight: bold;
             color: darkgrey;
+
+            &.label--active {
+                color: #f03d13;
+            }
         }
 
         .toggle {
@@ -65,7 +75,7 @@ defineEmits<{
                 display: none;
 
                 &:checked+.toggle__slider {
-                    background-color: #02b5db;
+                    background-color: #f03d13;
 
                     &:before {
                         left: 22px;

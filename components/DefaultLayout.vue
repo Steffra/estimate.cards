@@ -9,6 +9,8 @@
 <style scoped>
 .wrapper {
     padding: 1rem;
+    background-color: #fff;
+
 
     @media (width >=480px) {
         display: flex;

@@ -23,7 +23,6 @@ body {
   margin: 0;
   padding: 0;
   letter-spacing: 0.2px;
-  background-color: #f5f5f6;
 }
 
 * {

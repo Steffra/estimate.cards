@@ -171,6 +171,7 @@ const players = computed(() => {
   padding: 1rem;
   box-sizing: border-box;
   min-height: 100dvh;
+  background-color: #f5f5f6;
 }
 
 .header {

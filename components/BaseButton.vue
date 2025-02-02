@@ -43,8 +43,8 @@ button {
     }
 
     &:disabled {
-        background-color: #f3f3f3;
-        color: #646668;
+        background-color: darkgrey;
+        color: #fff;
         cursor: not-allowed;
     }
 
