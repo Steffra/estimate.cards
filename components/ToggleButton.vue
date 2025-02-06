@@ -1,6 +1,6 @@
 <template>
     <BaseButton ref="toggleButton" class="toggle-button" :text="cardsVisible ? 'NEW ROUND' : 'REVEAL CARDS'"
-        :secondary="cardsVisible || somePlayersVoted" :disabled="noPlayersVoted && !cardsVisible" />
+        :secondary="cardsVisible || somePlayersVoted || noPlayersVoted" />
 </template>
 
 <script setup lang="ts">
@@ -42,5 +42,6 @@ const animateToggleButton = () => {
     align-self: center;
     max-width: 300px;
     margin: 10px 0;
+    font-weight: 700;
 }
 </style>
