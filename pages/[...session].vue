@@ -148,10 +148,11 @@ const players = computed(() => {
         <div class="share-label">SHARE THIS SESSION <span>({{ session.id }})</span></div>
         <ShareButton />
       </div>
-      <BaseToggle :value="isObserver" @toggle="toggleObserver" text="OBSERVER MODE" />
+      <BaseToggle :value="isObserver" @toggle="toggleObserver" text="OBSERVER MODE" class="observer-toggle" />
     </div>
     <div class="players">
-      <Player v-for="player in players" :key="player.id" :player="player" :is-visible="session.cardsVisible" />
+      <Player v-for="(player, index) in players" :key="player.id" :player="player" :is-visible="session.cardsVisible"
+        :index="index" />
       <div v-if="players.length == 0" class="empty-state">No players have joined yet</div>
     </div>
     <ToggleButton @click="toggleVisibility" :cards-visible="session.cardsVisible" :somePlayersVoted="somePlayersVoted"
@@ -168,7 +169,7 @@ const players = computed(() => {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 1rem;
+  padding: 1rem 0 1rem 1rem;
   box-sizing: border-box;
   min-height: 100dvh;
   background-color: #f5f5f6;
@@ -186,11 +187,13 @@ const players = computed(() => {
   justify-content: center;
   gap: 0 2rem;
   flex-grow: 1;
-  max-height: calc(100dvh - 15rem);
+  max-height: calc(100dvh - 17rem);
   overflow-y: scroll;
+  scrollbar-color: #00005f #f5f5f6;
+  padding-top: 25px;
 
   @media (width >=480px) {
-    max-height: calc(100dvh - 17rem);
+    max-height: calc(100dvh - 19rem);
   }
 }
 
@@ -225,5 +228,9 @@ const players = computed(() => {
   color: darkgrey;
   margin-top: 1rem;
   justify-content: center;
+}
+
+.observer-toggle {
+  margin-right: 1rem;
 }
 </style>

@@ -1,8 +1,8 @@
 <template>
     <div class="voting-cards-wrapper">
         <div class="voting-cards">
-            <voting-card v-for="card in cards" :key="card.value" :value="card.value" :selected="card.selected"
-                @click="vote(card.value)" :disabled="props.isVotingDisabled" />
+            <voting-card v-for="card in cards" :key="card.value" :value="card.value" :color="card.color"
+                :selected="card.selected" @click="vote(card.value)" :disabled="props.isVotingDisabled" />
         </div>
     </div>
 </template>
@@ -10,7 +10,8 @@
 <script setup lang="ts">
 type VotingCard = {
     value: string,
-    selected: boolean
+    selected: boolean,
+    color: string
 }
 
 const props = defineProps<{
@@ -20,12 +21,12 @@ const emit = defineEmits(['vote'])
 
 
 const cards = ref<Array<VotingCard>>([
-    { value: "1", selected: false },
-    { value: "2", selected: false },
-    { value: "3", selected: false },
-    { value: "5", selected: false },
-    { value: "8", selected: false },
-    { value: "13", selected: false }
+    { value: "1", selected: false, color: "#00005f" },
+    { value: "2", selected: false, color: "#f47d20" },
+    { value: "3", selected: false, color: "#e11b22" },
+    { value: "5", selected: false, color: "#ffc20e" },
+    { value: "8", selected: false, color: "#1ec5ee" },
+    { value: "13", selected: false, color: "#00005f" }
 ])
 
 const vote = (selectedCard: string) => {
