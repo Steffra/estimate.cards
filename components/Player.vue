@@ -142,19 +142,24 @@ const cancelAnimation = () => {
 };
 
 const textColor = computed(() => {
-    switch (index % 5) {
-        case 0:
+    switch (player.card) {
+        case '1':
             return '#00005f';
-        case 1:
-            return '#1ec5ee';
-        case 2:
+        case '2':
             return '#f47d20';
-        case 3:
-            return '#ffc20e';
-        case 4:
+        case '3':
             return '#e11b22';
+        case '5':
+            return '#ffc20e';
+        case '8':
+            return '#1ec5ee';
+        case '13':
+            return '#00005f';
+        default:
+            return '#00005f';
     }
 });
+
 </script>
 
 <style scoped>

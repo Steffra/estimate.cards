@@ -5,7 +5,7 @@ const router = useRouter()
 function startSession() {
   if (!name.value) return
   window.sessionStorage.setItem('name', name.value)
-  router.push(`/session/new`)
+  router.push(`/new`)
 }
 </script>
 

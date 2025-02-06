@@ -16,7 +16,7 @@ export function useSocket() {
 
         watch(socket.data, (newValue) => {
             session.value = JSON.parse(newValue!)
-            window.history.replaceState(null, '', '/session/' + session.value.id)
+            window.history.replaceState(null, '', '/' + session.value.id)
         }) 
        }
     
