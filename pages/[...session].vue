@@ -10,33 +10,23 @@ const sessionExists = ref(false)
 onBeforeMount(() => {
   const name = window.sessionStorage.getItem('name')
   const sessionid = window.location.pathname.split('/').pop()
-  if (sessionid !== 'new') {
-    fetch(`/api/session/${sessionid}`)
-      .then(response => {
-        if (response.ok) {
-          sessionExists.value = true
-        } else {
-          window.location.href = '/'
-        }
-      })
-  }
+  const playerId = nanoid(32)
 
   if (!name) {
-    if (sessionid) {
-      window.sessionStorage.setItem('session', sessionid)
-      window.location.href = '/join' + "?session=" + sessionid
-    } else {
-      window.location.href = '/join'
-    }
+    window.location.href = '/join' + "?session=" + sessionid
+    return
   }
 
-  if (sessionid && name) {
-    const playerId = nanoid(32)
-    window.sessionStorage.setItem('id', playerId)
-    connect(sessionid, name, playerId)
-  } else {
-    router.push(`/`)
-  }
+  fetch(`/api/session/${sessionid}`)
+    .then(response => {
+      if (response.ok) {
+        sessionExists.value = true
+        window.sessionStorage.setItem('id', playerId)
+        connect(sessionid!, name, playerId)
+      } else {
+        router.push(`/`)
+      }
+    })
 })
 
 const toggleVisibility = () => {
@@ -47,14 +37,12 @@ const toggleVisibility = () => {
   }
 }
 
-
 watch(() => session.value.players, async () => {
   const container = document.querySelector('.players')
   if (!container) return;
   const oldFlexItemsInfo = getFlexItemsInfo(container)
   console.log(oldFlexItemsInfo)
   await nextTick();
-
 
   const newFlexItemsInfo = getFlexItemsInfo(container)
   console.log(newFlexItemsInfo)

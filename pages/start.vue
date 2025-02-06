@@ -4,8 +4,17 @@ const router = useRouter()
 
 function startSession() {
   if (!name.value) return
-  window.sessionStorage.setItem('name', name.value)
-  router.push(`/new`)
+  fetch(`/api/session/new`)
+    .then(response => {
+      if (response.ok) {
+        return response.json()
+      }
+    }).then(data => {
+      if (data.id) {
+        window.sessionStorage.setItem('name', name.value)
+        router.push(`/${data.id}`)
+      }
+    })
 }
 </script>
 

@@ -18,16 +18,6 @@ function removePlayerFromSession(peer: Peer, session: Session) {
   session.players = session.players.filter(player => player.peer !== peer.id)
 }
 
-function createSession(): string {
-  let sessionId = ''
-  do {
-    sessionId = nanoid(6)
-  } while (findSessionById(sessionId)?.players.length || sessionId.includes('-') || sessionId.includes('_'))
-
-  const session = { id: sessionId, cardsVisible: false, players: [] }
-  sessions.push(session)
-  return sessionId
-}
 
 function updateClients(peer: Peer) {
   const session = sessions.find(session => session.players.some(player => player.peer === peer.id))
@@ -47,10 +37,12 @@ export default defineWebSocketHandler({
     console.log('Player connected', id, playerName)
     if(!id || id =='null'){
       peer.close(0,'Player id not found')
+      return
     }
     let sessionid = params.get('session')
     if (!sessionid || !findSessionById(sessionid)) {
-      sessionid = createSession()
+      peer.close(0,'Session not found')
+      return
     }
     const session = findSessionById(sessionid)!
     addPlayerToSession(session, id!, playerName, peer)

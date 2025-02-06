@@ -19,12 +19,12 @@ async function startSession() {
   window.sessionStorage.setItem('name', name.value)
 
   if (sessionFromUrl.value) {
-    router.push(`/session/${sessionFromUrl.value}`)
+    router.push(`/${sessionFromUrl.value}`)
   } else {
     fetch(`/api/session/${sessionInput.value}`)
       .then(response => {
         if (response.ok) {
-          router.push(`/session/${sessionInput.value}`)
+          router.push(`/${sessionInput.value}`)
         } else {
           alert('Session not found')
         }
