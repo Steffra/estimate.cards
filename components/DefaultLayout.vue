@@ -16,7 +16,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100dvh;
+        height: calc(100dvh - 2rem);
         background-color: #f5f5f5;
     }
 }
