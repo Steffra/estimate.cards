@@ -7,7 +7,8 @@ export function useSocket() {
     
     const connect = (sessionid:string, name:string, playerId:string) => {
         const protocol= window.location.protocol === 'https:' ? 'wss' : 'ws'
-        socket = useWebSocket(`${protocol}://${location.host}/api/websocket?session=${sessionid}&name=${name}&id=${playerId}`)
+
+        socket = useWebSocket(`${protocol}://${location.host}/api/websocket?session=${sessionid}&name=${encodeURIComponent(name)}&id=${playerId}`)
         socket.ws.value!.onclose = (event) => {
             if(event.code === 0 ){
                 window.location.href = '/'
