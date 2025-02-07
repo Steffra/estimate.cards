@@ -33,6 +33,11 @@
 
   --input-border-color: #343d46;
   --input-border-color-focus: #0079cb;
+
+  --accent-color: #f03d13;
+  --low-emphasis-color: darkgrey;
+
+  --toggle-background-color: #ccc;
 }
 
 body {

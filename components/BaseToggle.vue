@@ -38,11 +38,11 @@ defineEmits<{
     .text {
         font-size: 11px;
         font-weight: bold;
-        color: darkgrey;
+        color: var(--low-emphasis-color);
         cursor: pointer;
 
         &.text--active {
-            color: #f03d13;
+            color: var(--accent-color);
         }
 
     }
@@ -60,7 +60,7 @@ defineEmits<{
             color: darkgrey;
 
             &.label--active {
-                color: #f03d13;
+                color: var(--accent-color);
             }
         }
 
@@ -75,7 +75,7 @@ defineEmits<{
                 display: none;
 
                 &:checked+.toggle__slider {
-                    background-color: #f03d13;
+                    background-color: var(--accent-color);
 
                     &:before {
                         left: 22px;
@@ -86,7 +86,7 @@ defineEmits<{
             .toggle__slider {
                 width: 40px;
                 height: 20px;
-                background: #ccc;
+                background: var(--toggle-background-color);
                 padding: 3px;
                 border-radius: 2em;
                 position: absolute;
@@ -96,7 +96,7 @@ defineEmits<{
                     content: '';
                     width: 20px;
                     height: 20px;
-                    background: #fff;
+                    background: var(--background-color);
                     position: absolute;
                     top: 50%;
                     left: 5px;
