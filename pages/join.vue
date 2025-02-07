@@ -50,37 +50,3 @@ async function startSession() {
     </form>
   </DefaultLayout>
 </template>
-
-<style scoped>
-h1 {
-  font-size: 18px;
-  font-weight: 400;
-  color: #00005f;
-  text-align: center;
-  margin-bottom: 0;
-}
-
-h2 {
-  font-size: 12px;
-  font-weight: 200;
-  margin-top: 0;
-  margin-bottom: 2rem;
-  color: #818991;
-  text-align: center;
-
-  &>span {
-    font-size: 9px;
-  }
-}
-
-form {
-  width: 100%;
-
-  &>div {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1rem;
-    gap: 12px;
-  }
-}
-</style>

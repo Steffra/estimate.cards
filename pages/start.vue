@@ -30,23 +30,3 @@ function startSession() {
     </form>
   </DefaultLayout>
 </template>
-
-<style scoped>
-h1 {
-  font-size: 18px;
-  font-weight: 400;
-  color: #00005f;
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-form {
-  width: 100%;
-
-  &>div {
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 1rem;
-  }
-}
-</style>

@@ -48,7 +48,7 @@ label {
     position: absolute;
     top: -7px;
     left: 10px;
-    color: #71777e;
+    color: var(--disabled-text-color);
     font-size: 12px;
     pointer-events: none;
     transition: 0.2s;

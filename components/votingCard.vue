@@ -21,13 +21,13 @@ const { value, selected, color } = defineProps<{
     border-radius: 10px;
     border: none;
     cursor: pointer;
-    color: #00005f;
-    fill: #00005f;
+    color: var(--primary-color);
+    fill: var(--primary-color);
     font-size: 24px;
     font-weight: bold;
     min-height: 4.5rem;
     min-width: 3rem;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 5px 5px 5px var(--box-shadow-color);
     /* this is needed because iOS Safari has predefiend styles for  buttons*/
     padding: 0;
 
@@ -38,23 +38,23 @@ const { value, selected, color } = defineProps<{
     }
 
     &:hover:enabled {
-        border: 1px solid #00005f;
+        border: 1px solid var(--primary-color);
     }
 
     &:active:enabled {
-        border: 1px solid #00005f;
-        box-shadow: inset 0 0 8px 2px rgba(0, 0, 0, 0.1);
+        border: 1px solid var(--primary-color);
+        box-shadow: inset 0 0 8px 2px var(--box-shadow-color);
     }
 
     &:disabled {
-        background-color: #f3f3f3;
-        color: #646668 !important;
+        background-color: var(--disabled-background-color);
+        color: var(--disabled-text-color) !important;
         cursor: not-allowed;
     }
 }
 
 .voting-card.selected {
-    background-color: #00005f;
-    color: white !important;
+    background-color: var(--primary-color);
+    color: var(--background-color);
 }
 </style>

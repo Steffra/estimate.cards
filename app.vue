@@ -38,6 +38,9 @@
   --low-emphasis-color: darkgrey;
 
   --toggle-background-color: #ccc;
+
+  --disabled-background-color: #f3f3f3;
+  --disabled-text-color: #71777e;
 }
 
 body {
@@ -50,5 +53,37 @@ body {
 
 * {
   touch-action: manipulation;
+}
+
+h1 {
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 0;
+}
+
+h2 {
+  font-size: 12px;
+  font-weight: 200;
+  margin-top: 0;
+  color: var(--disabled-text-color);
+  text-align: center;
+
+  &>span {
+    font-size: 9px;
+  }
+}
+
+form {
+  width: 100%;
+  margin-top: 1.5rem;
+
+  &>div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    gap: 12px;
+  }
 }
 </style>

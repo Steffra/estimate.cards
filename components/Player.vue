@@ -204,7 +204,7 @@ const textColor = computed(() => {
     width: 100%;
     height: 100%;
     border-radius: 12px;
-    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 10px 10px 10px var(--box-shadow-color);
     border: 5px double #00005f;
 
     padding: 4px 6px;
@@ -225,7 +225,7 @@ const textColor = computed(() => {
 }
 
 .card-back {
-    background-color: #fff;
+    background-color: var(--background-color);
     transform: rotateY(0deg);
     z-index: 2;
 }
@@ -242,7 +242,7 @@ const textColor = computed(() => {
 }
 
 .card-front {
-    background-color: #fff;
+    background-color: var(--background-color);
     transform: rotateY(180deg);
     z-index: 1;
     font-size: 56px;
@@ -250,15 +250,14 @@ const textColor = computed(() => {
 }
 
 .voted .card-back {
-    border-color: #f03d13;
-
+    border-color: var(--accent-color);
 }
 
 .player-name {
     font-size: 16px;
     line-height: 19px;
     font-weight: normal;
-    color: #00005f;
+    color: var(--primary-color);
     text-align: center;
     max-width: 75px;
     overflow: hidden;

@@ -24,14 +24,14 @@
 h1 {
   font-size: 20px;
   font-weight: 200;
-  color: #101316;
+  color: var(--primary-color);
   margin: 0;
 }
 
 h2 {
   font-size: 16px;
   font-weight: 100;
-  color: #71777e;
+  color: var(--disabled-text-color);
   margin: 0 0 1rem 0;
 }
 </style>
