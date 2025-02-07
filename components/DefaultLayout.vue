@@ -9,15 +9,14 @@
 <style scoped>
 .wrapper {
     padding: 1rem;
-    background-color: #fff;
-
+    background-color: var(--background-color);
 
     @media (width >=480px) {
         display: flex;
         justify-content: center;
         align-items: center;
         height: calc(100dvh - 2rem);
-        background-color: #f5f5f5;
+        background-color: var(--background-low-emphasis-color);
     }
 }
 
@@ -29,8 +28,8 @@
     gap: 1rem;
 
     @media (width >=480px) {
-        background-color: white;
-        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+        background-color: var(--background-color);
+        box-shadow: 5px 5px 5px var(--box-shadow-color);
         border-radius: 24px;
         padding: 0.5rem 2rem 2.5rem 2rem;
         margin-bottom: 35dvh;
