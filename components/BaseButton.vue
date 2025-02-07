@@ -11,62 +11,54 @@ const { text, secondary = false, disabled = false } = defineProps<{
     disabled?: boolean
 }>()
 </script>
-
 <style scoped>
 button {
-
-    background-color: #00005f;
-    color: white;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
     border: 1px transparent;
     border-radius: 8px;
     cursor: pointer;
     font-size: 18px;
     padding: 1rem 2rem;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 5px 5px 5px var(--box-shadow-color);
     width: 100%;
 
     &.secondary {
-        color: #00005f;
-        border: 1px solid #00005f;
-        background-color: #fff;
-        -webkit-box-shadow: inset 0px 0px 0px 2px #02b5db;
-        -moz-box-shadow: inset 0px 0px 0px 2px #02b5db;
-        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+        color: var(--primary-color);
+        border: 1px solid var(--secondary-border-color);
+        background-color: var(--secondary-color);
+        box-shadow: inset 0px 0px 0px 2px var(--secondary-box-shadow-color);
+        box-shadow: 5px 5px 5px var(--box-shadow-color);
 
         &:hover:enabled {
-            background-color: #e6ebf4;
+            background-color: var(--secondary-hover-bg-color);
         }
 
         &:active:enabled {
-            background-color: #9eb0d4;
+            background-color: var(--secondary-active-bg-color);
         }
     }
 
     &:disabled {
-        background-color: darkgrey;
-        color: #fff;
+        background-color: var(--disabled-bg-color);
+        color: var(--disabled-text-color);
         cursor: not-allowed;
     }
 
-
-
-
-    /*hover effect only on devices with hover capability*/
     @media(hover: hover) and (pointer: fine) {
         &:hover:enabled {
-            background-color: #88d5f5;
-            color: #00005f;
+            background-color: var(--hover-bg-color);
+            color: var(--primary-color);
         }
 
         &:active:enabled {
-            color: #00005f;
-            background-color: #bbe7f9;
+            color: var(--primary-color);
+            background-color: var(--active-bg-color);
         }
     }
 
     &:active:enabled {
-        background-color: #bbe7f9;
+        background-color: var(--active-bg-color);
     }
-
 }
 </style>
