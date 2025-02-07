@@ -16,6 +16,9 @@
   --popper-theme-padding: 8px;
   --popper-theme-box-shadow: 0 6px 30px -6px rgba(0, 0, 0, 0.25);
 
+  --background-color: #fff;
+  --background-low-emphasis-color: #f5f5f5;
+
   --primary-color: #00005f;
   --secondary-color: #fff;
   --hover-bg-color: #88d5f5;
@@ -27,6 +30,9 @@
   --secondary-active-bg-color: #9eb0d4;
   --box-shadow-color: rgba(0, 0, 0, 0.1);
   --secondary-box-shadow-color: #02b5db;
+
+  --input-border-color: #343d46;
+  --input-border-color-focus: #0079cb;
 }
 
 body {

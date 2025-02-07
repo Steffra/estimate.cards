@@ -28,8 +28,7 @@ div {
 input {
     padding: 0 1rem;
     border-radius: 0.5rem;
-    border: 1px solid #343d46;
-    color: #101316;
+    border: 1px solid var(--input-border-color);
     height: 3rem;
     white-space: nowrap;
     overflow: hidden;
@@ -41,7 +40,7 @@ input {
 }
 
 input:focus {
-    border: 1px solid #0079cb;
+    border: 1px solid var(--input-border-color-focus);
     outline: none;
 }
 
@@ -53,7 +52,7 @@ label {
     font-size: 12px;
     pointer-events: none;
     transition: 0.2s;
-    background-color: white;
+    background-color: var(--background-color);
     padding: 0 2px;
 
 }
