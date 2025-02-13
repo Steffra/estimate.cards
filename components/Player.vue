@@ -307,13 +307,13 @@ const textColor = computed(() => {
     border-radius: 32px;
     border: 1px dashed var(--branding);
     left: 17px;
-    top: 40px;
+    top: 39px;
 
     @media (width >=480px) {
         width: 50px;
         height: 50px;
-        left: 20px;
-        top: 45px;
+        left: 19px;
+        top: 44px;
     }
 }
 
@@ -322,12 +322,12 @@ const textColor = computed(() => {
     height: 30px;
     position: absolute;
     top: 9px;
-    left: 5px;
+    left: 6px;
 
     @media (width >=480px) {
         width: 40px;
         height: 40px;
-        top: 11px;
+        top: 10px;
         left: 5px;
     }
 
