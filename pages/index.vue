@@ -16,22 +16,6 @@
   width: 100%;
   text-align: center;
 
-  @media (width >=480px) {
-    margin-top: 1rem;
-  }
-}
 
-h1 {
-  font-size: 20px;
-  font-weight: 200;
-  color: var(--primary-color);
-  margin: 0;
-}
-
-h2 {
-  font-size: 16px;
-  font-weight: 100;
-  color: var(--disabled-text-color);
-  margin: 0 0 1rem 0;
 }
 </style>

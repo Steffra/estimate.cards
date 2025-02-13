@@ -38,7 +38,7 @@ defineEmits<{
     .text {
         font-size: 11px;
         font-weight: bold;
-        color: var(--low-emphasis-color);
+        color: var(--secondary-text);
         cursor: pointer;
 
         &.text--active {
@@ -86,7 +86,7 @@ defineEmits<{
             .toggle__slider {
                 width: 40px;
                 height: 20px;
-                background: var(--toggle-background-color);
+                background: var(--slider-background);
                 padding: 3px;
                 border-radius: 2em;
                 position: absolute;

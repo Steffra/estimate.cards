@@ -1,6 +1,6 @@
 <template>
     <Popper :show="showTooltip" :offsetSkid="'10'" :offsetDistance="'8'">
-        <BaseButton text="SHARE SESSION" secondary class="share-button" @click="copyUrlToClipboard">
+        <BaseButton text="SHARE SESSION" tertiary class="share-button" @click="copyUrlToClipboard">
         </BaseButton>
         <template #content :is-open>
             <div class="tooltip-content">
@@ -52,7 +52,7 @@ button.share-button {
     display: flex;
     align-items: center;
     justify-content: center;
-    fill: #00005f;
+    fill: var(--primary-text);
     font-size: 14px;
     font-weight: 400;
 

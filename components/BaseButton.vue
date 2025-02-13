@@ -1,20 +1,21 @@
 <template>
-    <button :disabled="disabled" :class="{ 'secondary': secondary }">{{ text }}
+    <button :disabled="disabled" :class="{ 'secondary': secondary, 'tertiary': tertiary }">{{ text }}
         <slot></slot>
     </button>
 </template>
 
 <script setup lang="ts">
-const { text, secondary = false, disabled = false } = defineProps<{
+const { text, secondary = false, disabled = false, tertiary = false } = defineProps<{
     text: string
     secondary?: boolean
     disabled?: boolean
+    tertiary?: boolean
 }>()
 </script>
 <style scoped>
 button {
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
+    background-color: var(--branding);
+    color: var(--primary-text);
     border: 1px transparent;
     border-radius: 8px;
     cursor: pointer;
@@ -23,42 +24,64 @@ button {
     box-shadow: 5px 5px 5px var(--box-shadow-color);
     width: 100%;
 
+    &:focus-visible {
+        outline: var(--divider) auto 1px;
+    }
+
     &.secondary {
-        color: var(--primary-color);
-        border: 1px solid var(--secondary-border-color);
-        background-color: var(--secondary-color);
-        box-shadow: inset 0px 0px 0px 2px var(--secondary-box-shadow-color);
+        color: var(--branding);
+        border: 1px solid var(--secondary-border);
+        background-color: var(--soft-background);
         box-shadow: 5px 5px 5px var(--box-shadow-color);
 
         &:hover:enabled {
-            background-color: var(--secondary-hover-bg-color);
+            background-color: var(--secondary-hover-bg);
+            color: var(--primary-text);
         }
 
         &:active:enabled {
-            background-color: var(--secondary-active-bg-color);
+            background-color: var(--secondary-active-bg);
+            color: var(--primary-text);
+        }
+    }
+
+    &.tertiary {
+        color: var(--primary-text);
+        border: none;
+        background-color: var(--slider-background);
+        box-shadow: 5px 5px 5px var(--box-shadow-color);
+
+        &:hover:enabled {
+            background-color: var(--secondary-hover-bg);
+            color: var(--primary-text);
+        }
+
+        &:active:enabled {
+            background-color: var(--secondary-active-bg);
+            color: var(--primary-text);
         }
     }
 
     &:disabled {
-        background-color: var(--disabled-bg-color);
-        color: var(--disabled-text-color);
         cursor: not-allowed;
+        opacity: 50%;
     }
 
     @media(hover: hover) and (pointer: fine) {
         &:hover:enabled {
-            background-color: var(--hover-bg-color);
-            color: var(--primary-color);
+            background-color: var(--hover-bg);
         }
 
         &:active:enabled {
-            color: var(--primary-color);
-            background-color: var(--active-bg-color);
+            background-color: var(--active-bg);
+            color: var(--primary-text);
+
         }
     }
 
     &:active:enabled {
-        background-color: var(--active-bg-color);
+        background-color: var(--active-bg);
+        color: var(--primary-text);
     }
 }
 </style>

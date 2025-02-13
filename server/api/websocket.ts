@@ -1,4 +1,3 @@
-import { nanoid } from 'nanoid'
 import { Peer, Message} from 'crossws'
 import { type Session } from '../../types/types'
 import sessions from "~/server/sessions"

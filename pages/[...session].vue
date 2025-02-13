@@ -160,7 +160,6 @@ const players = computed(() => {
   padding: 1rem 0 1rem 1rem;
   box-sizing: border-box;
   min-height: 100dvh;
-  background-color: var(--background-low-emphasis-color);
 }
 
 .header {
@@ -177,7 +176,7 @@ const players = computed(() => {
   flex-grow: 1;
   max-height: calc(100dvh - 17rem);
   overflow-y: scroll;
-  scrollbar-color: var(--primary-color) var(--background-color);
+  scrollbar-color: var(--branding) var(--background-color);
   padding-top: 25px;
 
   @media (width >=480px) {
@@ -200,7 +199,7 @@ const players = computed(() => {
 .share-label {
   font-size: 11px;
   font-weight: bold;
-  color: var(--low-emphasis-color);
+  color: var(--secondary-text);
   padding-left: 5px;
   margin-bottom: 4px;
 
@@ -213,7 +212,7 @@ const players = computed(() => {
 .empty-state {
   font-size: 14px;
   font-weight: 400;
-  color: var(--low-emphasis-color);
+  color: var(--secondary-text);
   margin-top: 1rem;
   justify-content: center;
 }

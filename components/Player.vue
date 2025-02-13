@@ -15,11 +15,11 @@
                         <div class="background-logo"></div>
                         <div class="background-logo"></div>
                         <div class="logo-center">
-                            <img class="logo2" src="assets/aldi-logo.svg" alt="Aldi logo" />
+                            <div class="logo2" />
                         </div>
                     </div>
                 </div>
-                <div class="card-front" :style="'color:' + textColor">
+                <div class="card-front">
                     {{ player.card }}
                 </div>
             </div>
@@ -204,8 +204,8 @@ const textColor = computed(() => {
     width: 100%;
     height: 100%;
     border-radius: 12px;
-    box-shadow: 10px 10px 10px var(--box-shadow-color);
-    border: 5px double #00005f;
+    border: 5px double var(--branding);
+    color: var(--primary-text);
 
     padding: 4px 6px;
 
@@ -219,13 +219,12 @@ const textColor = computed(() => {
     align-items: center;
 
     @media (width >=480px) {
-        padding: 5px;
-
+        padding: 6px 5px 5px 5px;
     }
 }
 
 .card-back {
-    background-color: var(--background-color);
+    background-color: var(--soft-background);
     transform: rotateY(0deg);
     z-index: 2;
 }
@@ -242,22 +241,22 @@ const textColor = computed(() => {
 }
 
 .card-front {
-    background-color: var(--background-color);
+    background-color: var(--card-background);
     transform: rotateY(180deg);
     z-index: 1;
     font-size: 56px;
     font-weight: bold;
 }
 
-.voted .card-back {
-    border-color: var(--accent-color);
+.voted>div {
+    box-shadow: 0px 2px 10px var(--branding);
 }
 
 .player-name {
     font-size: 16px;
     line-height: 19px;
     font-weight: normal;
-    color: var(--primary-color);
+    color: var(--primary-text);
     text-align: center;
     max-width: 75px;
     overflow: hidden;
@@ -278,8 +277,7 @@ const textColor = computed(() => {
 .background-logo {
     min-width: 8px;
     height: 100%;
-    background-image: url("assets/aldi-logo.svg");
-    background-repeat: repeat;
+    background-image: url(assets/vue-logo.svg);
 
     overflow: hidden;
 
@@ -302,25 +300,37 @@ const textColor = computed(() => {
 
 
 .logo-center {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     position: absolute;
-    background-color: white;
+    background-color: var(--soft-background);
     border-radius: 32px;
-    left: 13px;
-    top: 35px;
+    border: 1px dashed var(--branding);
+    left: 17px;
+    top: 40px;
 
     @media (width >=480px) {
+        width: 50px;
+        height: 50px;
         left: 20px;
         top: 45px;
     }
 }
 
 .logo2 {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     position: absolute;
-    top: 3px;
+    top: 9px;
     left: 5px;
+
+    @media (width >=480px) {
+        width: 40px;
+        height: 40px;
+        top: 11px;
+        left: 5px;
+    }
+
+    background-image: url(assets/vue-logo.svg);
 }
 </style>

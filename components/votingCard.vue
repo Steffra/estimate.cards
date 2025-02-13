@@ -1,5 +1,5 @@
 <template>
-    <button class="voting-card" :class="{ 'selected': selected }" :style="'color:' + color">{{ value }}</button>
+    <button class="voting-card" :class="{ 'selected': selected }">{{ value }}</button>
 </template>
 
 <script setup lang="ts">
@@ -17,12 +17,12 @@ const { value, selected, color } = defineProps<{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #fff;
+    background-color: var(--voting-card-background);
     border-radius: 10px;
     border: none;
     cursor: pointer;
-    color: var(--primary-color);
-    fill: var(--primary-color);
+    color: var(--voting-card-text);
+    fill: var(--branding);
     font-size: 24px;
     font-weight: bold;
     min-height: 4.5rem;
@@ -38,23 +38,25 @@ const { value, selected, color } = defineProps<{
     }
 
     &:hover:enabled {
-        border: 1px solid var(--primary-color);
+        border: 1px solid var(--branding);
     }
 
     &:active:enabled {
-        border: 1px solid var(--primary-color);
-        box-shadow: inset 0 0 8px 2px var(--box-shadow-color);
+        border: 1px solid var(--branding);
+        box-shadow: inset 0 0 8px 10px var(--box-shadow-color)
     }
 
     &:disabled {
-        background-color: var(--disabled-background-color);
-        color: var(--disabled-text-color) !important;
+        opacity: 50%;
         cursor: not-allowed;
     }
 }
 
 .voting-card.selected {
-    background-color: var(--primary-color);
-    color: var(--background-color);
+    color: var(--branding);
+    border: 1px solid var(--branding);
+    transition-duration: 500ms;
+    transition-property: transform;
+    transform: translateY(-10px);
 }
 </style>

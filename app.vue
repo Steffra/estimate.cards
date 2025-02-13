@@ -7,40 +7,48 @@
 
 <style>
 :root {
-  --popper-theme-background-color: #eeeeee;
-  --popper-theme-background-color-hover: #eeeeee;
-  --popper-theme-text-color: #00005f;
-  --popper-theme-border-width: 1px;
+  /*default colors */
+  --branding: #42b883;
+  --branding-light: #42d392;
+  --branding-dark: #33a06f;
+  --accent-color: #73abfe;
+
+  /*text colors */
+  --primary-text: rgb(255 255 255 / 87%);
+  --secondary-text: rgb(255 255 255 / 60%);
+
+  /*background colors */
+  --background-color: #1a1a1a;
+  --soft-background: #242424;
+
+  --divider: rgb(84 84 84 / 65%);
+
+  /*button colors */
+  --hover-bg: var(--branding-light);
+  --active-bg: var(--branding-dark);
+  --secondary-border: var(--branding);
+  --secondary-hover-bg: var(--hover-bg);
+  --secondary-active-bg: var(--active-bg);
+  --box-shadow-color: rgba(71, 107, 82, 0.1);
+
+  /*component colors */
+  --card-background: var(--soft-background);
+
+  --voting-card-background: var(--soft-background);
+  --voting-card-text: var(--primary-text);
+
+  --slider-background: #2f2f2f;
+
+  /*popper config */
+  --popper-theme-background-color: var(--soft-background);
+  --popper-theme-background-color-hover: var(--soft-background);
+  --popper-theme-text-color: var(--primary-text);
+  --popper-theme-border-color: var(--divider);
+  --popper-theme-border-width: 0;
   --popper-theme-border-style: solid;
   --popper-theme-border-radius: 10px;
   --popper-theme-padding: 8px;
-  --popper-theme-box-shadow: 0 6px 30px -6px rgba(0, 0, 0, 0.25);
-
-  --background-color: #fff;
-  --background-low-emphasis-color: #f5f5f5;
-
-  --primary-color: #00005f;
-  --secondary-color: #fff;
-  --hover-bg-color: #88d5f5;
-  --active-bg-color: #bbe7f9;
-  --disabled-bg-color: darkgrey;
-  --disabled-text-color: #fff;
-  --secondary-border-color: #00005f;
-  --secondary-hover-bg-color: #e6ebf4;
-  --secondary-active-bg-color: #9eb0d4;
-  --box-shadow-color: rgba(0, 0, 0, 0.1);
-  --secondary-box-shadow-color: #02b5db;
-
-  --input-border-color: #343d46;
-  --input-border-color-focus: #0079cb;
-
-  --accent-color: #f03d13;
-  --low-emphasis-color: darkgrey;
-
-  --toggle-background-color: #ccc;
-
-  --disabled-background-color: #f3f3f3;
-  --disabled-text-color: #71777e;
+  --popper-theme-box-shadow: 0 6px 30px -6px var(--box-shadow-color);
 }
 
 body {
@@ -49,6 +57,7 @@ body {
   margin: 0;
   padding: 0;
   letter-spacing: 0.2px;
+  background-color: var(--background-color);
 }
 
 * {
@@ -56,18 +65,22 @@ body {
 }
 
 h1 {
-  font-size: 18px;
-  font-weight: 400;
-  color: var(--primary-color);
+  font-size: 20px;
+  font-weight: 200;
+  color: var(--primary-text);
   text-align: center;
-  margin-bottom: 0;
+  margin: 0;
+
+  @media (width >=480px) {
+    margin-top: 1rem;
+  }
 }
 
 h2 {
   font-size: 12px;
   font-weight: 200;
   margin-top: 0;
-  color: var(--disabled-text-color);
+  color: var(--secondary-text);
   text-align: center;
 
   &>span {

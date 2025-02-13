@@ -28,7 +28,9 @@ div {
 input {
     padding: 0 1rem;
     border-radius: 0.5rem;
-    border: 1px solid var(--input-border-color);
+    background-color: var(--soft-background);
+    color: var(--primary-text);
+    border: 1px solid var(--divider);
     height: 3rem;
     white-space: nowrap;
     overflow: hidden;
@@ -40,7 +42,7 @@ input {
 }
 
 input:focus {
-    border: 1px solid var(--input-border-color-focus);
+    border: 1px solid var(--branding);
     outline: none;
 }
 
@@ -48,11 +50,11 @@ label {
     position: absolute;
     top: -7px;
     left: 10px;
-    color: var(--disabled-text-color);
+    color: var(--branding);
     font-size: 12px;
     pointer-events: none;
     transition: 0.2s;
-    background-color: var(--background-color);
+    background: var(--soft-background);
     padding: 0 2px;
 
 }
