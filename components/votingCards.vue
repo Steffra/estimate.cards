@@ -2,7 +2,8 @@
     <div class="voting-cards-wrapper">
         <div class="voting-cards">
             <voting-card v-for="card in cards" :key="card.value" :value="card.value" :color="card.color"
-                :selected="card.selected" @click="vote(card.value)" :disabled="props.isVotingDisabled" />
+                :selected="card.value === props.selectedCard" @click="vote(card.value)"
+                :disabled="props.isVotingDisabled" />
         </div>
     </div>
 </template>
@@ -16,6 +17,7 @@ type VotingCard = {
 
 const props = defineProps<{
     isVotingDisabled: boolean
+    selectedCard: string | null
 }>()
 const emit = defineEmits(['vote'])
 

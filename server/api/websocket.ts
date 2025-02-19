@@ -35,12 +35,11 @@ export default defineWebSocketHandler({
     const id = params.get('id')
     console.log('Player connected', id, playerName)
     if(!id || id =='null'){
-      peer.close(0,'Player id not found')
+      peer.close(1000,'Player id not found')
       return
     }
     let sessionid = params.get('session')
-    if (!sessionid || !findSessionById(sessionid)) {
-      peer.close(0,'Session not found')
+    if (!sessionid ) {
       return
     }
     const session = findSessionById(sessionid)!
@@ -63,6 +62,9 @@ export default defineWebSocketHandler({
       return
     }
     const player = session.players.find(player => player.peer === peer.id)
+    if(event === 'ping'){
+      peer.send(JSON.stringify(session))
+    }
     if(event === 'vote'){
       const player = session!.players.find(player => player.peer === peer.id)
       if(player!.card == messageData.value){

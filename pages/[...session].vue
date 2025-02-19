@@ -3,14 +3,15 @@ import { useSocket } from '~/composables/useSocket'
 import { nanoid } from 'nanoid'
 //useTemplateRef is new in vue 3.5 !
 //https://medium.com/@shuhan.chan08/basic-usage-of-vue-3-5-usetemplateref-4b8d7a89bf7d
-const votingCards = useTemplateRef('votingCards')
 const { connect, session, reset, revealCards, vote, toggleObserverMode } = useSocket()!
 const router = useRouter()
 const sessionExists = ref(false)
+const playerId = ref('')
 onBeforeMount(() => {
   const name = window.sessionStorage.getItem('name')
   const sessionid = window.location.pathname.split('/').pop()
-  const playerId = nanoid(32)
+  playerId.value = nanoid(32)
+
 
   if (!name) {
     window.location.href = '/join' + "?session=" + sessionid
@@ -21,8 +22,8 @@ onBeforeMount(() => {
     .then(response => {
       if (response.ok) {
         sessionExists.value = true
-        window.sessionStorage.setItem('id', playerId)
-        connect(sessionid!, name, playerId)
+        window.sessionStorage.setItem('id', playerId.value)
+        connect(sessionid!, name, playerId.value)
       } else {
         router.push(`/`)
       }
@@ -41,19 +42,11 @@ watch(() => session.value.players, async () => {
   const container = document.querySelector('.players')
   if (!container) return;
   const oldFlexItemsInfo = getFlexItemsInfo(container)
-  console.log(oldFlexItemsInfo)
   await nextTick();
 
   const newFlexItemsInfo = getFlexItemsInfo(container)
-  console.log(newFlexItemsInfo)
 
   aminateFlexItems(oldFlexItemsInfo, newFlexItemsInfo)
-})
-
-watch(() => session.value.cardsVisible, (newValue) => {
-  if (newValue && votingCards.value) {
-    votingCards.value.resetSelection()
-  }
 })
 
 interface FlexItemInfo {
@@ -127,6 +120,14 @@ const toggleObserver = () => {
 const players = computed(() => {
   return session.value.players.filter(p => !p.observer)
 })
+
+const selectedCard = computed(() => {
+  const player = session.value.players.find(player => player.id == playerId.value)
+  if (player) {
+    return player.card
+  }
+  return null
+})
 </script>
 
 <template>
@@ -145,8 +146,8 @@ const players = computed(() => {
     </div>
     <ToggleButton @click="toggleVisibility" :cards-visible="session.cardsVisible" :somePlayersVoted="somePlayersVoted"
       :noPlayersVoted="noPlayersVoted" />
-    <div class="voting-cards" v-if="!isObserver">
-      <VotingCards @vote="vote" ref="votingCards" :is-voting-disabled="session.cardsVisible" />
+    <div v-if="!isObserver">
+      <VotingCards @vote="vote" :is-voting-disabled="session.cardsVisible" :selected-card="selectedCard" />
     </div>
 
   </div>
@@ -160,6 +161,7 @@ const players = computed(() => {
   padding: 1rem 0 1rem 1rem;
   box-sizing: border-box;
   min-height: 100dvh;
+  background-color: var(--background-low-emphasis-color);
 }
 
 .header {
@@ -176,7 +178,7 @@ const players = computed(() => {
   flex-grow: 1;
   max-height: calc(100dvh - 17rem);
   overflow-y: scroll;
-  scrollbar-color: var(--branding) var(--background-color);
+  scrollbar-color: var(--primary-color) var(--background-color);
   padding-top: 25px;
 
   @media (width >=480px) {
@@ -199,7 +201,7 @@ const players = computed(() => {
 .share-label {
   font-size: 11px;
   font-weight: bold;
-  color: var(--secondary-text);
+  color: var(--low-emphasis-color);
   padding-left: 5px;
   margin-bottom: 4px;
 
@@ -212,7 +214,7 @@ const players = computed(() => {
 .empty-state {
   font-size: 14px;
   font-weight: 400;
-  color: var(--secondary-text);
+  color: var(--low-emphasis-color);
   margin-top: 1rem;
   justify-content: center;
 }
