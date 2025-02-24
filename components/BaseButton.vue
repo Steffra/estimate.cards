@@ -31,7 +31,7 @@ button {
     &.secondary {
         color: var(--branding);
         border: 1px solid var(--secondary-border);
-        background-color: var(--background);
+        background-color: var(--soft-background);
         box-shadow: var(--box-shadow-default);
 
         &:hover:enabled {
