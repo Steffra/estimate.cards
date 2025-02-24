@@ -53,7 +53,8 @@ const { value, selected, color } = defineProps<{
 }
 
 .voting-card.selected {
-    color: var(--branding);
+    color: var(--voting-card-selected-text);
+    background-color: var(--primary-button-selected-background);
     border: 1px solid var(--branding);
     transition-duration: 500ms;
     transition-property: transform;

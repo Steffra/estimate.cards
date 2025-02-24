@@ -31,12 +31,15 @@
   --secondary-hover-bg: var(--hover-bg);
   --secondary-active-bg: var(--active-bg);
   --box-shadow-color: rgba(71, 107, 82, 0.1);
+  --primary-button-selected-background: var(--voting-card-background);
+  --primary-button-selected-text: var(--primary-text);
 
   /*component colors */
   --card-background: var(--soft-background);
 
   --voting-card-background: var(--soft-background);
   --voting-card-text: var(--primary-text);
+  --voting-card-selected-text: var(--primary-text);
 
   --slider-color: var(--background-color);
   --slider-background-color: var(--secondary-text);
