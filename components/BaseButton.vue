@@ -21,7 +21,7 @@ button {
     cursor: pointer;
     font-size: 18px;
     padding: 1rem 2rem;
-    box-shadow: 5px 5px 5px var(--box-shadow-color);
+    box-shadow: var(--box-shadow-default);
     width: 100%;
 
     &:focus-visible {
@@ -32,7 +32,7 @@ button {
         color: var(--branding);
         border: 1px solid var(--secondary-border);
         background-color: var(--soft-background);
-        box-shadow: 5px 5px 5px var(--box-shadow-color);
+        box-shadow: var(--box-shadow-default);
 
         &:hover:enabled {
             background-color: var(--secondary-hover-bg);
@@ -48,8 +48,8 @@ button {
     &.tertiary {
         color: var(--primary-text);
         border: none;
-        background-color: var(--slider-background);
-        box-shadow: 5px 5px 5px var(--box-shadow-color);
+        background-color: var(--tertiary-background);
+        box-shadow: var(--box-shadow-default);
 
         &:hover:enabled {
             background-color: var(--secondary-hover-bg);

@@ -27,7 +27,7 @@ const { value, selected, color } = defineProps<{
     font-weight: bold;
     min-height: 4.5rem;
     min-width: 3rem;
-    box-shadow: 5px 5px 5px var(--box-shadow-color);
+    box-shadow: var(--box-shadow-default);
     /* this is needed because iOS Safari has predefiend styles for  buttons*/
     padding: 0;
 

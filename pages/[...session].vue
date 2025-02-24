@@ -142,7 +142,7 @@ const selectedCard = computed(() => {
     <div class="players">
       <Player v-for="(player, index) in players" :key="player.id" :player="player" :is-visible="session.cardsVisible"
         :index="index" />
-      <div v-if="players.length == 0" class="empty-state">No players have joined yet</div>
+      <div v-if="players.length == 0" class="empty-state">No players have joined yet.</div>
     </div>
     <ToggleButton @click="toggleVisibility" :cards-visible="session.cardsVisible" :somePlayersVoted="somePlayersVoted"
       :noPlayersVoted="noPlayersVoted" />
@@ -201,7 +201,7 @@ const selectedCard = computed(() => {
 .share-label {
   font-size: 11px;
   font-weight: bold;
-  color: var(--low-emphasis-color);
+  color: var(--secondary-text);
   padding-left: 5px;
   margin-bottom: 4px;
 
@@ -214,7 +214,7 @@ const selectedCard = computed(() => {
 .empty-state {
   font-size: 14px;
   font-weight: 400;
-  color: var(--low-emphasis-color);
+  color: var(--secondary-text);
   margin-top: 1rem;
   justify-content: center;
 }

@@ -18,8 +18,9 @@
   --secondary-text: rgb(255 255 255 / 60%);
 
   /*background colors */
-  --background-color: #1a1a1a;
-  --soft-background: #242424;
+  --background-color: #242424;
+  --soft-background: #2f2f2f;
+  --tertiary-background: #2f2f2f;
 
   --divider: rgb(84 84 84 / 65%);
 
@@ -37,7 +38,9 @@
   --voting-card-background: var(--soft-background);
   --voting-card-text: var(--primary-text);
 
-  --slider-background: #2f2f2f;
+  --slider-color: #1a1a1a;
+
+  --box-shadow-default: 0 0 0 var(--box-shadow-color);
 
   /*popper config */
   --popper-theme-background-color: var(--soft-background);

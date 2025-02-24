@@ -86,7 +86,7 @@ defineEmits<{
             .toggle__slider {
                 width: 40px;
                 height: 20px;
-                background: var(--slider-background);
+                background: var(--secondary-text);
                 padding: 3px;
                 border-radius: 2em;
                 position: absolute;
