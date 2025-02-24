@@ -47,6 +47,8 @@
   --slider-background-color: var(--secondary-text);
   --box-shadow-default: 0 0 0 var(--box-shadow-color);
 
+  --input-label-color: var(--branding);
+
   /*popper config */
   --popper-theme-background-color: var(--soft-background);
   --popper-theme-background-color-hover: var(--soft-background);

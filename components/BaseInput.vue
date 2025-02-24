@@ -50,7 +50,7 @@ label {
     position: absolute;
     top: -7px;
     left: 10px;
-    color: var(--branding);
+    color: var(--input-label-color);
     font-size: 12px;
     pointer-events: none;
     transition: 0.2s;
