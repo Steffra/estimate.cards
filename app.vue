@@ -33,7 +33,7 @@
   --secondary-hover-text: var(--hover-text);
   --secondary-active-bg: var(--active-bg);
   --box-shadow-color: rgba(71, 107, 82, 0.1);
-  --primary-button-selected-background: var(--voting-card-background);
+  --primary-button-selected-background: var(--branding);
   --primary-button-selected-text: var(--primary-text);
 
   /*component colors */
