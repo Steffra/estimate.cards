@@ -14,8 +14,8 @@ const { text, secondary = false, disabled = false, tertiary = false } = definePr
 </script>
 <style scoped>
 button {
-    background-color: var(--branding);
-    color: var(--primary-text);
+    background-color: var(--primary-button-selected-background);
+    color: var(--primary-button-selected-text);
     border: 1px transparent;
     border-radius: 8px;
     cursor: pointer;
