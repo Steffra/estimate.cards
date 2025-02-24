@@ -38,8 +38,8 @@
   --voting-card-background: var(--soft-background);
   --voting-card-text: var(--primary-text);
 
-  --slider-color: #1a1a1a;
-
+  --slider-color: var(--background-color);
+  --slider-background-color: var(--secondary-text);
   --box-shadow-default: 0 0 0 var(--box-shadow-color);
 
   /*popper config */
