@@ -36,7 +36,7 @@ button {
 
         &:hover:enabled {
             background-color: var(--secondary-hover-bg);
-            color: var(--primary-text);
+            color: var(--secondary-hover-text);
         }
 
         &:active:enabled {
@@ -70,6 +70,7 @@ button {
     @media(hover: hover) and (pointer: fine) {
         &:hover:enabled {
             background-color: var(--hover-bg);
+            color: var(--hover-text);
         }
 
         &:active:enabled {

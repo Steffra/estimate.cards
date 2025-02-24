@@ -26,9 +26,11 @@
 
   /*button colors */
   --hover-bg: var(--branding-light);
+  --hover-text: var(--primary-text);
   --active-bg: var(--branding-dark);
   --secondary-border: var(--branding);
   --secondary-hover-bg: var(--hover-bg);
+  --secondary-hover-text: var(--hover-text);
   --secondary-active-bg: var(--active-bg);
   --box-shadow-color: rgba(71, 107, 82, 0.1);
   --primary-button-selected-background: var(--voting-card-background);
