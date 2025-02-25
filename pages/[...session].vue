@@ -161,7 +161,7 @@ const selectedCard = computed(() => {
   padding: 1rem 0 1rem 1rem;
   box-sizing: border-box;
   min-height: 100dvh;
-  background-color: var(--background-low-emphasis-color);
+  background-color: var(--background-color);
 }
 
 .header {

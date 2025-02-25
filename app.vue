@@ -69,7 +69,11 @@ body {
   margin: 0;
   padding: 0;
   letter-spacing: 0.2px;
-  background-color: var(--background-color);
+  background-color: var(--soft-background);
+
+  @media (width >=480px) {
+    background-color: var(--background-color);
+  }
 }
 
 * {
