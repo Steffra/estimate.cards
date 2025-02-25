@@ -250,6 +250,7 @@ const textColor = computed(() => {
 
 .voted>div {
     box-shadow: 0px 2px 10px var(--branding);
+    border-color: var(--branding);
 }
 
 .player-name {
