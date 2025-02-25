@@ -48,6 +48,7 @@
   --box-shadow-default: 0 0 0 var(--box-shadow-color);
 
   --input-label-color: var(--branding);
+  --input-border-focus: var(--branding);
 
   /*popper config */
   --popper-theme-background-color: var(--soft-background);
