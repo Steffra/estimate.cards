@@ -49,6 +49,7 @@
 
   --input-label-color: var(--branding);
   --input-border-focus: var(--branding);
+  --input-text-color: var(--primary-text);
 
   /*popper config */
   --popper-theme-background-color: var(--soft-background);

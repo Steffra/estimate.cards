@@ -29,7 +29,7 @@ input {
     padding: 0 1rem;
     border-radius: 0.5rem;
     background-color: var(--soft-background);
-    color: var(--primary-text);
+    color: var(--input-text-color);
     border: 1px solid var(--divider);
     height: 3rem;
     white-space: nowrap;
@@ -42,7 +42,7 @@ input {
 }
 
 input:focus {
-    border: 1px solid var(--branding);
+    border: 1px solid var(--input-border-focus);
     outline: none;
 }
 
