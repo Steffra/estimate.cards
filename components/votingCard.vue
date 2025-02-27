@@ -1,5 +1,7 @@
 <template>
-    <button class="voting-card" :class="{ 'selected': selected }">{{ value }}</button>
+    <button class="voting-card"
+        :class="[{ 'selected': selected }, { 'orange': value == '2' }, { 'red': value == '3' }, { 'yellow': value == '5' }, { 'lightblue': value == '8' }]">{{
+            value }}</button>
 </template>
 
 <script setup lang="ts">
@@ -49,6 +51,22 @@ const { value, selected, color } = defineProps<{
     &:disabled {
         opacity: 50%;
         cursor: not-allowed;
+    }
+
+    &.orange {
+        color: #f47d20;
+    }
+
+    &.red {
+        color: #e11b22;
+    }
+
+    &.yellow {
+        color: #ffc20e;
+    }
+
+    &.lightblue {
+        color: #1ec5ee;
     }
 }
 

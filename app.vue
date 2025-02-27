@@ -8,19 +8,19 @@
 <style>
 :root {
   /*default colors */
-  --branding: #42b883;
-  --branding-light: #42d392;
-  --branding-dark: #33a06f;
-  --accent-color: #73abfe;
+  --branding: #00005f;
+  --branding-light: #88d5f5;
+  --branding-dark: #bbe7f9;
+  --accent-color: #f03d13;
 
   /*text colors */
-  --primary-text: rgb(255 255 255 / 87%);
-  --secondary-text: rgb(255 255 255 / 60%);
+  --primary-text: #00005f;
+  --secondary-text: darkgrey;
 
   /*background colors */
-  --background-color: #242424;
-  --soft-background: #2f2f2f;
-  --tertiary-background: #2f2f2f;
+  --background-color: #f5f5f5;
+  --soft-background: #fff;
+  --tertiary-background: #ccc;
 
   --divider: rgb(84 84 84 / 65%);
 
@@ -29,27 +29,27 @@
   --hover-text: var(--primary-text);
   --active-bg: var(--branding-dark);
   --secondary-border: var(--branding);
-  --secondary-hover-bg: var(--hover-bg);
+  --secondary-hover-bg: #e6ebf4;
   --secondary-hover-text: var(--hover-text);
-  --secondary-active-bg: var(--active-bg);
-  --box-shadow-color: rgba(71, 107, 82, 0.1);
-  --primary-button-selected-background: var(--branding);
-  --primary-button-selected-text: var(--primary-text);
+  --secondary-active-bg: #9eb0d4;
+  --box-shadow-color: rgba(0, 0, 0, 0.1);
+  --primary-button-selected-background: var(--primary-text);
+  --primary-button-selected-text: var(--soft-background);
 
   /*component colors */
   --card-background: var(--soft-background);
 
   --voting-card-background: var(--soft-background);
   --voting-card-text: var(--primary-text);
-  --voting-card-selected-text: var(--primary-text);
+  --voting-card-selected-text: var(--soft-background);
 
   --slider-color: var(--background-color);
   --slider-background-color: var(--secondary-text);
-  --box-shadow-default: 0 0 0 var(--box-shadow-color);
+  --box-shadow-default: 5px 5px 5px var(--box-shadow-color);
 
-  --input-label-color: var(--branding);
-  --input-border-focus: var(--branding);
-  --input-text-color: var(--primary-text);
+  --input-label-color: #71777e;
+  --input-border-focus: #0079cb;
+  --input-text-color: #000;
 
   /*popper config */
   --popper-theme-background-color: var(--soft-background);

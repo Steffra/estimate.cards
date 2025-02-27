@@ -15,11 +15,12 @@
                         <div class="background-logo"></div>
                         <div class="background-logo"></div>
                         <div class="logo-center">
-                            <div class="logo2" />
+                            <img class="logo2" src="assets/aldi-logo.svg" alt="Aldi logo" />
                         </div>
                     </div>
                 </div>
-                <div class="card-front">
+                <div class="card-front"
+                    :class="[{ 'orange': player.card == '2' }, { 'red': player.card == '3' }, { 'yellow': player.card == '5' }, { 'lightblue': player.card == '8' }]">
                     {{ player.card }}
                 </div>
             </div>
@@ -227,6 +228,7 @@ const textColor = computed(() => {
     background-color: var(--soft-background);
     transform: rotateY(0deg);
     z-index: 2;
+    box-shadow: 10px 10px 10px var(--box-shadow-color);
 }
 
 .card-back__inner {
@@ -246,11 +248,27 @@ const textColor = computed(() => {
     z-index: 1;
     font-size: 56px;
     font-weight: bold;
+
+    &.orange {
+        color: #f47d20;
+    }
+
+    &.red {
+        color: #e11b22;
+    }
+
+    &.yellow {
+        color: #ffc20e;
+    }
+
+    &.lightblue {
+        color: #1ec5ee;
+    }
 }
 
-.voted>div {
-    box-shadow: 0px 2px 10px var(--branding);
-    border-color: var(--branding);
+
+.voted>.card-back {
+    border-color: var(--accent-color);
 }
 
 .player-name {
@@ -278,7 +296,7 @@ const textColor = computed(() => {
 .background-logo {
     min-width: 8px;
     height: 100%;
-    background-image: url(assets/vue-logo.svg);
+    background-image: url(assets/aldi-logo.svg);
 
     overflow: hidden;
 
@@ -301,37 +319,27 @@ const textColor = computed(() => {
 
 
 .logo-center {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     position: absolute;
-    background-color: var(--soft-background);
+    background-color: white;
     border-radius: 32px;
+    left: 13px;
+    top: 35px;
     border: 1px dashed var(--branding);
-    left: 17px;
-    top: 39px;
+
 
     @media (width >=480px) {
-        width: 50px;
-        height: 50px;
-        left: 19px;
-        top: 44px;
+        left: 20px;
+        top: 45px;
     }
 }
 
 .logo2 {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     position: absolute;
-    top: 9px;
-    left: 6px;
-
-    @media (width >=480px) {
-        width: 40px;
-        height: 40px;
-        top: 10px;
-        left: 5px;
-    }
-
-    background-image: url(assets/vue-logo.svg);
+    top: 3px;
+    left: 5px;
 }
 </style>
