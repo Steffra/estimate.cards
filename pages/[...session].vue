@@ -3,7 +3,7 @@ import { useSocket } from '~/composables/useSocket'
 import { nanoid } from 'nanoid'
 //useTemplateRef is new in vue 3.5 !
 //https://medium.com/@shuhan.chan08/basic-usage-of-vue-3-5-usetemplateref-4b8d7a89bf7d
-const { connect, session, reset, revealCards, vote, toggleObserverMode } = useSocket()!
+const { connect, session, reset, revealCards, vote, toggleObserverMode, disconnect } = useSocket()!
 const router = useRouter()
 const sessionExists = ref(false)
 const playerId = ref('')
@@ -127,6 +127,10 @@ const selectedCard = computed(() => {
     return player.card
   }
   return null
+})
+
+onBeforeRouteLeave(() => {
+  disconnect()
 })
 </script>
 

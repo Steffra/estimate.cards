@@ -8,6 +8,12 @@ function findSessionById(sessionId: string): Session | undefined {
 
 function addPlayerToSession(session: Session, id: string, playerName: string, peer: Peer, observer = false) {
   const player = { id, peer: peer.id, name: playerName, card: null, observer }
+  if(session.players.some(player => player.id === id)){
+    console.log('Player already in session')
+    session.players.find(player => player.id === id)!.peer = peer.id
+    updateClients(peer)
+    return
+  }
   session.players.push(player)
   peer.subscribe(session.id)
   updateClients(peer)

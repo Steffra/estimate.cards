@@ -53,6 +53,13 @@ export function useSocket() {
         }, 5000)
     }
 
+    const disconnect = () => {
+        console.log('disconnect')
+        if(socket && socket.ws.value){
+            socket.ws.value?.close()
+        }
+    }
+
     const reconnect = () => {   
         const name  = sessionStorage.getItem('name')
         const playerId = sessionStorage.getItem('id')
@@ -63,8 +70,7 @@ export function useSocket() {
         connect(session.value.id, name, playerId)
     }
 
-
     return {
-        connect, session, vote, revealCards, reset, toggleObserverMode
+        connect, session, vote, revealCards, reset, toggleObserverMode, disconnect
     };
 }
