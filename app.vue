@@ -18,8 +18,8 @@
   --secondary-text: rgb(255 255 255 / 60%);
 
   /*background colors */
-  --background-color: #181818;
-  --soft-background: #222222;
+  --background-color: #020420;
+  --soft-background: #0e112c;
   --tertiary-background: #222222;
 
   --divider: rgb(84 84 84 / 65%);
