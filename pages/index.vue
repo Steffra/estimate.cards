@@ -5,7 +5,7 @@
       <h2> ... or join your team!</h2>
     </div>
 
-    <BaseLink to="/start" text="START SESSION"></BaseLink>
+    <BaseLink to="/start" text="START SESSION" secondary></BaseLink>
     <BaseLink to="join" text="JOIN SESSION" secondary></BaseLink>
 
   </DefaultLayout>

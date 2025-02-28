@@ -28,7 +28,7 @@
     @media (width >=480px) {
         background-color: var(--soft-background);
         box-shadow: var(--box-shadow-default);
-        border-radius: 24px;
+        border-radius: 3px;
         padding: 0.5rem 2rem 2.5rem 2rem;
         margin-bottom: 35dvh;
     }

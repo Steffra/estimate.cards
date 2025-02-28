@@ -8,25 +8,25 @@
 <style>
 :root {
   /*default colors */
-  --branding: #42b883;
-  --branding-light: #42d392;
-  --branding-dark: #33a06f;
-  --accent-color: #73abfe;
+  --branding: #08fdd8;
+  --branding-light: #4effe4;
+  --branding-dark: rgba(15, 204, 176, 0.838);
+  --accent-color: #17fad8;
 
   /*text colors */
-  --primary-text: rgb(255 255 255 / 87%);
+  --primary-text: rgb(255, 255, 255);
   --secondary-text: rgb(255 255 255 / 60%);
 
   /*background colors */
-  --background-color: #242424;
-  --soft-background: #2f2f2f;
-  --tertiary-background: #2f2f2f;
+  --background-color: #181818;
+  --soft-background: #222222;
+  --tertiary-background: #222222;
 
   --divider: rgb(84 84 84 / 65%);
 
   /*button colors */
   --hover-bg: var(--branding-light);
-  --hover-text: var(--primary-text);
+  --hover-text: var(--soft-background);
   --active-bg: var(--branding-dark);
   --secondary-border: var(--branding);
   --secondary-hover-bg: var(--hover-bg);
@@ -34,21 +34,21 @@
   --secondary-active-bg: var(--active-bg);
   --box-shadow-color: rgba(71, 107, 82, 0.1);
   --primary-button-selected-background: var(--branding);
-  --primary-button-selected-text: var(--primary-text);
+  --primary-button-selected-text: var(--soft-background);
 
   /*component colors */
   --card-background: var(--soft-background);
 
   --voting-card-background: var(--soft-background);
   --voting-card-text: var(--primary-text);
-  --voting-card-selected-text: var(--primary-text);
+  --voting-card-selected-text: var(--soft-background);
 
   --slider-color: var(--background-color);
   --slider-background-color: var(--secondary-text);
   --box-shadow-default: 0 0 0 var(--box-shadow-color);
 
-  --input-label-color: var(--branding);
-  --input-border-focus: var(--branding);
+  --input-label-color: var(--secondary-text);
+  --input-border-focus: var(--primary-text);
   --input-text-color: var(--primary-text);
 
   /*popper config */

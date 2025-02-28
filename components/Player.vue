@@ -203,7 +203,7 @@ const textColor = computed(() => {
     box-sizing: border-box;
     width: 100%;
     height: 100%;
-    border-radius: 12px;
+    border-radius: 5px;
     border: 5px double var(--branding);
     color: var(--primary-text);
 
@@ -232,7 +232,6 @@ const textColor = computed(() => {
 .card-back__inner {
     width: 100%;
     height: 100%;
-    border-radius: 8px;
     display: flex;
     border-radius: 5px;
     overflow: hidden;

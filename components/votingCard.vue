@@ -18,7 +18,7 @@ const { value, selected, color } = defineProps<{
     justify-content: center;
     align-items: center;
     background-color: var(--voting-card-background);
-    border-radius: 10px;
+    border-radius: 3px;
     border: none;
     cursor: pointer;
     color: var(--voting-card-text);

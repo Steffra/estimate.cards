@@ -26,7 +26,7 @@ function startSession() {
         <!-- this works since vue3.4! /> -->
         <BaseInput v-model:inputValue="name" placeholder="NAME" label="Your name" autofocus />
       </div>
-      <BaseButton :disabled="name === ''" :text="'START'" />
+      <BaseButton :disabled="name === ''" :text="'START'" secondary />
     </form>
   </DefaultLayout>
 </template>

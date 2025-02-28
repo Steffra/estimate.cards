@@ -27,7 +27,7 @@ div {
 
 input {
     padding: 0 1rem;
-    border-radius: 0.5rem;
+    border-radius: 3px;
     background-color: var(--soft-background);
     color: var(--input-text-color);
     border: 1px solid var(--divider);

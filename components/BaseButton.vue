@@ -17,7 +17,7 @@ button {
     background-color: var(--primary-button-selected-background);
     color: var(--primary-button-selected-text);
     border: 1px transparent;
-    border-radius: 8px;
+    border-radius: 3px;
     cursor: pointer;
     font-size: 18px;
     padding: 1rem 2rem;
@@ -41,7 +41,7 @@ button {
 
         &:active:enabled {
             background-color: var(--secondary-active-bg);
-            color: var(--primary-text);
+            color: var(--soft-background);
         }
     }
 
