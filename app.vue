@@ -9,18 +9,18 @@
 :root {
   /*default colors */
   --branding: #42b883;
-  --branding-light: #42d392;
-  --branding-dark: #33a06f;
+  --branding-light: #00C16A;
+  --branding-dark: #00DC82;
   --accent-color: #73abfe;
 
   /*text colors */
-  --primary-text: rgb(255 255 255 / 87%);
-  --secondary-text: rgb(255 255 255 / 60%);
+  --primary-text: rgb(255 255 255);
+  --secondary-text: #e2e5f0;
 
   /*background colors */
-  --background-color: #242424;
-  --soft-background: #2f2f2f;
-  --tertiary-background: #2f2f2f;
+  --background-color: #020420;
+  --soft-background: #0e112c;
+  --tertiary-background: #0e112c;
 
   --divider: rgb(84 84 84 / 65%);
 
