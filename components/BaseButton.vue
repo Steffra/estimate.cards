@@ -1,15 +1,16 @@
 <template>
-    <button :disabled="disabled" :class="{ 'secondary': secondary, 'tertiary': tertiary }">{{ text }}
+    <button :disabled="disabled" :class="{ 'secondary': secondary, 'tertiary': tertiary, 'small': small }">{{ text }}
         <slot></slot>
     </button>
 </template>
 
 <script setup lang="ts">
-const { text, secondary = false, disabled = false, tertiary = false } = defineProps<{
+const { text, secondary = false, disabled = false, tertiary = false, small = false } = defineProps<{
     text: string
     secondary?: boolean
     disabled?: boolean
     tertiary?: boolean
+    small?: boolean
 }>()
 </script>
 <style scoped>
@@ -60,6 +61,10 @@ button {
             background-color: var(--secondary-active-bg);
             color: var(--primary-text);
         }
+    }
+
+    &.small {
+        padding: 5px 10px;
     }
 
     &:disabled {

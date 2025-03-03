@@ -7,6 +7,7 @@ const { connect, session, reset, revealCards, vote, toggleObserverMode, disconne
 const router = useRouter()
 const sessionExists = ref(false)
 const playerId = ref('')
+
 onBeforeMount(() => {
   const name = window.sessionStorage.getItem('name')
   const sessionid = window.location.pathname.split('/').pop()
@@ -137,11 +138,14 @@ onBeforeRouteLeave(() => {
 <template>
   <div v-if="session.id" class="session">
     <div class="header">
-      <div>
+      <div class="left">
         <div class="share-label">SHARE THIS SESSION <span>({{ session.id }})</span></div>
         <ShareButton />
       </div>
-      <BaseToggle :value="isObserver" @toggle="toggleObserver" text="OBSERVER MODE" class="observer-toggle" />
+      <div class="right">
+        <ThemeSelector />
+        <BaseToggle :value="isObserver" @toggle="toggleObserver" text="OBSERVER MODE" class="observer-toggle" />
+      </div>
     </div>
     <div class="players">
       <Player v-for="(player, index) in players" :key="player.id" :player="player" :is-visible="session.cardsVisible"
@@ -171,6 +175,12 @@ onBeforeRouteLeave(() => {
 .header {
   display: flex;
   justify-content: space-between;
+
+  .right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
 }
 
 .players {
