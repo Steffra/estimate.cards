@@ -8,6 +8,8 @@ const isDropdownOpen = ref(false)
 const selectTheme = (theme: string) => {
     selectedTheme.value = theme
     isDropdownOpen.value = false
+    document.documentElement.setAttribute('theme', theme);
+
 }
 const closeDropdown = () => {
     isDropdownOpen.value = false
