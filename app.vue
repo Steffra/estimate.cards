@@ -36,6 +36,15 @@
   --primary-button-selected-background: var(--branding);
   --primary-button-selected-text: var(--primary-text);
 
+
+  --button-border-radius: 8px;
+  --player-card-border-radius: 12px;
+  --player-card-inner-border-radius: 8px;
+  --layout-border-radius: 24px;
+  --voting-card-border-radius: 10px;
+  --backgrodund-image-url: url('assets/vue-logo.svg');
+
+
   /*component colors */
   --card-background: var(--soft-background);
 
@@ -61,6 +70,7 @@
   --popper-theme-border-radius: 10px;
   --popper-theme-padding: 8px;
   --popper-theme-box-shadow: 0 6px 30px -6px var(--box-shadow-color);
+
 }
 
 :root[theme='Nuxt'] {
@@ -73,6 +83,40 @@
   --tertiary-background: #0e112c;
 }
 
+:root[theme='Nuxt'] {
+  --branding-light: #00C16A;
+  --branding-dark: #00DC82;
+  --primary-text: rgb(255 255 255);
+  --secondary-text: #e2e5f0;
+  --background-color: #020420;
+  --soft-background: #0e112c;
+  --tertiary-background: #0e112c;
+}
+
+:root[theme='Custom'] {
+  --branding: #08fdd8;
+  --branding-light: #4effe4;
+  --branding-dark: rgba(15, 204, 176, 0.838);
+  --accent-color: #17fad8;
+  --primary-text: rgb(255, 255, 255);
+  --background-color: #181818;
+  --soft-background: #222222;
+  --tertiary-background: #222222;
+  --hover-text: var(--soft-background);
+  --primary-button-selected-text: var(--soft-background);
+  --voting-card-selected-text: var(--soft-background);
+  --input-label-color: var(--secondary-text);
+  --input-border-focus: var(--primary-text);
+
+  --button-border-radius: 3px;
+  --button-border-radius: 3px;
+  --player-card-border-radius: 5px;
+  --player-card-inner-border-radius: 0px;
+  --layout-border-radius: 3px;
+  --voting-card-border-radius: 3px;
+  --backgrodund-image-url: url('assets/custom-vue-logo.svg');
+
+}
 
 
 body {

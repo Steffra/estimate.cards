@@ -203,7 +203,7 @@ const textColor = computed(() => {
     box-sizing: border-box;
     width: 100%;
     height: 100%;
-    border-radius: 12px;
+    border-radius: var(--player-card-border-radius);
     border: 5px double var(--branding);
     color: var(--primary-text);
 
@@ -232,9 +232,8 @@ const textColor = computed(() => {
 .card-back__inner {
     width: 100%;
     height: 100%;
-    border-radius: 8px;
+    border-radius: var(--player-card-inner-border-radius);
     display: flex;
-    border-radius: 5px;
     overflow: hidden;
     box-sizing: border-box;
 
@@ -278,7 +277,7 @@ const textColor = computed(() => {
 .background-logo {
     min-width: 8px;
     height: 100%;
-    background-image: url(assets/vue-logo.svg);
+    background-image: var(--backgrodund-image-url);
 
     overflow: hidden;
 
@@ -332,6 +331,6 @@ const textColor = computed(() => {
         left: 5px;
     }
 
-    background-image: url(assets/vue-logo.svg);
+    background-image: var(--backgrodund-image-url);
 }
 </style>

@@ -18,7 +18,7 @@ button {
     background-color: var(--primary-button-selected-background);
     color: var(--primary-button-selected-text);
     border: 1px transparent;
-    border-radius: 8px;
+    border-radius: var(--button-border-radius);
     cursor: pointer;
     font-size: 18px;
     padding: 1rem 2rem;

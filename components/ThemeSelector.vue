@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-const themes = ref(['Aldi', 'Vue', 'Nuxt', 'Steffra'])
+const themes = ref(['Aldi', 'Vue', 'Nuxt', 'Custom'])
 const selectedTheme = ref('Aldi')
 const isDropdownOpen = ref(false)
 
@@ -87,7 +87,6 @@ button {
 
             &:hover {
                 background-color: var(--background-color);
-                color: var(--secondary-hover-text);
             }
 
         }
