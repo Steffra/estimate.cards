@@ -115,7 +115,30 @@
   --layout-border-radius: 3px;
   --voting-card-border-radius: 3px;
   --backgrodund-image-url: url('assets/custom-vue-logo.svg');
+}
 
+:root[theme='Custom2'] {
+  --branding: #08fdd8;
+  --branding-light: #4effe4;
+  --branding-dark: rgba(15, 204, 176, 0.838);
+  --accent-color: #17fad8;
+  --primary-text: rgb(255, 255, 255);
+  --background-color: #020420;
+  --soft-background: #0e112c;
+  --tertiary-background: #222222;
+  --hover-text: var(--soft-background);
+  --primary-button-selected-text: var(--soft-background);
+  --voting-card-selected-text: var(--soft-background);
+  --input-label-color: var(--secondary-text);
+  --input-border-focus: var(--primary-text);
+
+  --button-border-radius: 3px;
+  --button-border-radius: 3px;
+  --player-card-border-radius: 5px;
+  --player-card-inner-border-radius: 0px;
+  --layout-border-radius: 3px;
+  --voting-card-border-radius: 3px;
+  --backgrodund-image-url: url('assets/custom-vue-logo.svg');
 }
 
 

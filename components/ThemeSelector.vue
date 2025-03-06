@@ -1,13 +1,12 @@
 <script setup lang="ts">
 
-const themes = ref(['Aldi', 'Vue', 'Nuxt', 'Custom'])
+const themes = ref(['Aldi', 'Vue', 'Nuxt', 'Custom', 'Custom2'])
 const selectedTheme = ref('Aldi')
 const isDropdownOpen = ref(false)
 
 
 const selectTheme = (theme: string) => {
     selectedTheme.value = theme
-    isDropdownOpen.value = false
     document.documentElement.setAttribute('theme', theme);
 
 }
