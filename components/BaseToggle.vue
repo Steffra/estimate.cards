@@ -33,7 +33,13 @@ defineEmits<{
     display: flex;
     align-items: end;
     flex-direction: column;
-    gap: 12px;
+    gap: 4px;
+    margin-top: -8px;
+
+    @media (min-width: 480px) {
+        margin-top: 0;
+        gap: 12px;
+    }
 
     .text {
         font-size: 11px;

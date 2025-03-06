@@ -9,20 +9,25 @@ const selectTheme = (theme: string) => {
     selectedTheme.value = theme
     isDropdownOpen.value = false
 }
+const closeDropdown = () => {
+    isDropdownOpen.value = false
+}
 
+defineExpose({
+    closeDropdown
+})
 </script>
 
 
 <template>
     <div class="wrapper">
-        <h1>THEME</h1>
+        <button @click.stop="isDropdownOpen = !isDropdownOpen">CHANGE THEME</button>
         <div class="theme-selector">
-            <BaseButton @click="isDropdownOpen = !isDropdownOpen" :text="selectedTheme" tertiary small> </BaseButton>
             <ul v-show="isDropdownOpen" class="themes">
                 <li v-for="theme in themes" :key="theme" :class="{
                     selected
                         : theme === selectedTheme
-                }" @click="selectTheme(theme)">
+                }" @click.stop="selectTheme(theme)">
                     {{ theme }}
                 </li>
             </ul>
@@ -37,25 +42,25 @@ const selectTheme = (theme: string) => {
     align-items: start;
 }
 
-h1 {
+button {
     font-size: 11px;
     font-weight: bold;
     color: var(--secondary-text);
     cursor: pointer;
-    margin-top: 0;
     font-weight: bold;
+    background-color: unset;
+    box-shadow: none;
+    border: none;
+    text-decoration: underline;
+    text-decoration-color: var(--branding);
+    font-weight: 700;
 }
 
 .theme-selector {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 120px;
-    margin-top: 8px;
-
-    >button {
-        border: 1px solid var(--divider)
-    }
+    width: 100px;
 
     ul {
         display: flex;
@@ -68,7 +73,7 @@ h1 {
         padding: 3px;
         z-index: 1;
         width: 108px;
-        margin-top: 35px;
+        margin-top: 6px;
         cursor: pointer;
         list-style-type: none;
 

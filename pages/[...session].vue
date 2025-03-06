@@ -133,18 +133,25 @@ const selectedCard = computed(() => {
 onBeforeRouteLeave(() => {
   disconnect()
 })
+const themeSelectorRef = useTemplateRef('themeSelector')
+
+const handleclick = () => {
+  if (themeSelectorRef.value) {
+    themeSelectorRef.value.closeDropdown()
+  }
+}
 </script>
 
 <template>
-  <div v-if="session.id" class="session">
+  <div v-if="session.id" class="session" @click="handleclick">
     <div class="header">
       <div class="left">
         <div class="share-label">SHARE THIS SESSION <span>({{ session.id }})</span></div>
         <ShareButton />
       </div>
       <div class="right">
-        <ThemeSelector />
         <BaseToggle :value="isObserver" @toggle="toggleObserver" text="OBSERVER MODE" class="observer-toggle" />
+        <ThemeSelector ref="themeSelector" />
       </div>
     </div>
     <div class="players">
@@ -178,8 +185,13 @@ onBeforeRouteLeave(() => {
 
   .right {
     display: flex;
-    align-items: center;
-    gap: 1rem;
+    gap: 4px;
+    flex-direction: column;
+
+    @media (width >=480px) {
+      gap: 3rem;
+      flex-direction: row-reverse;
+    }
   }
 }
 
