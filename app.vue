@@ -63,6 +63,18 @@
   --popper-theme-box-shadow: 0 6px 30px -6px var(--box-shadow-color);
 }
 
+:root[theme='Nuxt'] {
+  --branding-light: #00C16A;
+  --branding-dark: #00DC82;
+  --primary-text: rgb(255 255 255);
+  --secondary-text: #e2e5f0;
+  --background-color: #020420;
+  --soft-background: #0e112c;
+  --tertiary-background: #0e112c;
+}
+
+
+
 body {
   font-family: Poppins;
   font-family: "Poppins", sans-serif;
