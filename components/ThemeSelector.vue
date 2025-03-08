@@ -13,13 +13,6 @@ const closeDropdown = () => {
     isDropdownOpen.value = false
 }
 
-onBeforeMount(() => {
-    const theme = localStorage.getItem('theme')
-    if (theme) {
-        selectedTheme.value = theme
-        document.documentElement.setAttribute('theme', theme);
-    }
-})
 defineExpose({
     closeDropdown
 })

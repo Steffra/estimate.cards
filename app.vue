@@ -4,6 +4,19 @@
   </div>
 </template>
 
+<script setup lang="ts">
+
+onBeforeMount(() => {
+  const theme = localStorage.getItem('theme')
+  if (theme) {
+    document.documentElement.setAttribute('theme', theme);
+  } else {
+    document.documentElement.setAttribute('theme', 'Aldi');
+    localStorage.setItem('theme', 'Aldi');
+  }
+})
+
+</script>
 
 <style>
 :root {
