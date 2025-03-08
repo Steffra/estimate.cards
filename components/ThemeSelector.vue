@@ -1,19 +1,25 @@
 <script setup lang="ts">
 
-const themes = ref(['Aldi', 'Vue', 'Nuxt', 'Custom', 'Custom2'])
+const themes = ref(['Aldi', 'Vue', 'Custom'/*, 'Custom2', 'Nuxt'*/])
 const selectedTheme = ref('Aldi')
 const isDropdownOpen = ref(false)
-
 
 const selectTheme = (theme: string) => {
     selectedTheme.value = theme
     document.documentElement.setAttribute('theme', theme);
-
+    localStorage.setItem('theme', theme);
 }
 const closeDropdown = () => {
     isDropdownOpen.value = false
 }
 
+onBeforeMount(() => {
+    const theme = localStorage.getItem('theme')
+    if (theme) {
+        selectedTheme.value = theme
+        document.documentElement.setAttribute('theme', theme);
+    }
+})
 defineExpose({
     closeDropdown
 })

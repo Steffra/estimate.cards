@@ -102,7 +102,7 @@
   --tertiary-background: #0e112c;
 }
 
-:root[theme='Custom'] {
+:root[theme='Custom2'] {
   --branding: #08fdd8;
   --branding-light: #4effe4;
   --branding-dark: rgba(15, 204, 176, 0.838);
@@ -126,7 +126,7 @@
   --backgrodund-image-url: url('assets/custom-vue-logo.svg');
 }
 
-:root[theme='Custom2'] {
+:root[theme='Custom'] {
   --branding: #08fdd8;
   --branding-light: #4effe4;
   --branding-dark: rgba(15, 204, 176, 0.838);
