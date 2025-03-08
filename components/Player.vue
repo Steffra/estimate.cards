@@ -269,12 +269,12 @@ const textColor = computed(() => {
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2;
-    /* number of lines to show */
     line-clamp: 2;
     -webkit-box-orient: vertical;
     height: 36px;
     text-wrap: balance;
     word-wrap: break-word;
+    align-content: center;
 
     @media (width >=480px) {
         max-width: 90px;

@@ -81,7 +81,7 @@ button {
         li {
             padding: 7px;
             border-radius: 8px;
-            color: white;
+            color: var(--input-text-color);
 
 
             &:hover {
