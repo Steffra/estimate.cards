@@ -19,7 +19,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="card-front">
+                <div class="card-front"
+                    :class="[{ 'orange': player.card == '2' }, { 'red': player.card == '3' }, { 'yellow': player.card == '5' }, { 'lightblue': player.card == '8' }]">
                     {{ player.card }}
                 </div>
             </div>
@@ -227,6 +228,7 @@ const textColor = computed(() => {
     background-color: var(--soft-background);
     transform: rotateY(0deg);
     z-index: 2;
+    box-shadow: var(--player-card-back-box-shadow);
 }
 
 .card-back__inner {
@@ -247,9 +249,14 @@ const textColor = computed(() => {
     font-weight: bold;
 }
 
-.voted>div {
-    box-shadow: 0px 2px 10px var(--branding);
-    border-color: var(--branding);
+.voted>.card-front {
+    box-shadow: var(--voted-card-front-box-shadow);
+    border-color: var(--voted-card-front-border);
+}
+
+.voted>.card-back {
+    box-shadow: var(--voted-card-back-box-shadow);
+    border-color: var(--voted-card-back-border);
 }
 
 .player-name {
@@ -321,14 +328,13 @@ const textColor = computed(() => {
     width: 30px;
     height: 30px;
     position: absolute;
-    top: 9px;
-    left: 6px;
+    top: var(--logo-offset-top);
+    left: 5px;
 
     @media (width >=480px) {
         width: 40px;
         height: 40px;
-        top: 10px;
-        left: 5px;
+        top: var(--logo-offset-top-desktop);
     }
 
     background-image: var(--backgrodund-image-url);

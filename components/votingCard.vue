@@ -1,5 +1,7 @@
 <template>
-    <button class="voting-card" :class="{ 'selected': selected }">{{ value }}</button>
+    <button class="voting-card"
+        :class="[{ 'selected': selected }, { 'orange': value == '2' }, { 'red': value == '3' }, { 'yellow': value == '5' }, { 'lightblue': value == '8' }]">{{
+        value }}</button>
 </template>
 
 <script setup lang="ts">

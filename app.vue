@@ -43,6 +43,15 @@
   --layout-border-radius: 24px;
   --voting-card-border-radius: 10px;
   --backgrodund-image-url: url('assets/vue-logo.svg');
+  --logo-offset-top: 9px;
+  --logo-offset-top-desktop: 10px;
+
+
+  --voted-card-back-box-shadow: none;
+  --voted-card-front-box-shadow: 0px 2px 10px var(--branding);
+  --voted-card-back-box-shadow: 0px 2px 10px var(--branding);
+  --voted-card-front-border: var(--branding);
+  --voted-card-back-border: var(--branding);
 
 
   /*component colors */
@@ -139,6 +148,55 @@
   --layout-border-radius: 3px;
   --voting-card-border-radius: 3px;
   --backgrodund-image-url: url('assets/custom-vue-logo.svg');
+}
+
+:root[theme='Aldi'] {
+  --branding: #00005f;
+  --branding-light: #88d5f5;
+  --branding-dark: #bbe7f9;
+  --accent-color: #f03d13;
+
+  --primary-text: #00005f;
+  --secondary-text: darkgrey;
+  --background-color: #f5f5f5;
+  --soft-background: #fff;
+  --tertiary-background: #ccc;
+  --secondary-hover-bg: #e6ebf4;
+  --secondary-active-bg: #9eb0d4;
+  --box-shadow-color: rgba(0, 0, 0, 0.1);
+  --primary-button-selected-background: var(--primary-text);
+  --primary-button-selected-text: var(--soft-background);
+  --voting-card-selected-text: var(--soft-background);
+  --box-shadow-default: 5px 5px 5px var(--box-shadow-color);
+  --input-label-color: #71777e;
+  --input-border-focus: #0079cb;
+  --input-text-color: #000;
+  --backgrodund-image-url: url('assets/aldi-logo.svg');
+  --logo-offset-top: 4px;
+  --logo-offset-top-desktop: 3px;
+
+  --player-card-back-box-shadow: 10px 10px 10px var(--box-shadow-color);
+  --voted-card-front-box-shadow: 10px 10px 10px var(--box-shadow-color);
+  --voted-card-back-box-shadow: 10px 10px 10px var(--box-shadow-color);
+  --voted-card-front-border: var(--branding);
+  --voted-card-back-border: var(--accent-color);
+
+
+  .orange {
+    color: #f47d20;
+  }
+
+  .red {
+    color: #e11b22;
+  }
+
+  .yellow {
+    color: #ffc20e;
+  }
+
+  .lightblue {
+    color: #1ec5ee;
+  }
 }
 
 
