@@ -1,20 +1,23 @@
 <template>
-    <div class="wrapper">
+    <div class="layout-wrapper">
         <div class="content">
             <slot></slot>
         </div>
+        <ThemeSelector />
     </div>
 </template>
 
 <style scoped>
-.wrapper {
+.layout-wrapper {
     padding: 1rem;
 
     @media (width >=480px) {
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         height: calc(100dvh - 2rem);
+        gap: 1rem;
     }
 }
 
@@ -30,7 +33,6 @@
         box-shadow: var(--box-shadow-default);
         border-radius: var(--layout-border-radius);
         padding: 0.5rem 2rem 2.5rem 2rem;
-        margin-bottom: 35dvh;
     }
 }
 </style>

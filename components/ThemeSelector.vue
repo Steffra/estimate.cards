@@ -13,6 +13,16 @@ const closeDropdown = () => {
     isDropdownOpen.value = false
 }
 
+onBeforeMount(() => {
+    const theme = localStorage.getItem('theme')
+    if (theme) {
+        document.documentElement.setAttribute('theme', theme);
+        selectedTheme.value = theme
+    } else {
+        document.documentElement.setAttribute('theme', 'Aldi');
+        localStorage.setItem('theme', 'Aldi');
+    }
+})
 defineExpose({
     closeDropdown
 })
@@ -21,7 +31,7 @@ defineExpose({
 
 <template>
     <div class="wrapper">
-        <button @click.stop="isDropdownOpen = !isDropdownOpen">CHANGE THEME</button>
+        <button @click.stop="isDropdownOpen = !isDropdownOpen"> CHANGE THEME </button>
         <div class="theme-selector">
             <ul v-show="isDropdownOpen" class="themes">
                 <li v-for="theme in themes" :key="theme" :class="{

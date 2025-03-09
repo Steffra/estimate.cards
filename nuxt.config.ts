@@ -11,5 +11,7 @@ export default defineNuxtConfig({
       viewport: 'width=device-width, initial-scale=1',
     }
   },
-  compatibilityDate: '2024-11-19'
+  compatibilityDate: '2024-11-19',
+  //disable ssr untill theme selector is implemented
+  ssr: false
 })
