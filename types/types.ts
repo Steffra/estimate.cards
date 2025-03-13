@@ -2,7 +2,7 @@ export type Player = {
     id: string,
     name: string,
     card: string | null,
-    peer: string,
+    peers: string[],
     observer: boolean
   }
   

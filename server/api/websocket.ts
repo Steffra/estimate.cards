@@ -7,10 +7,10 @@ function findSessionById(sessionId: string): Session | undefined {
 }
 
 function addPlayerToSession(session: Session, id: string, playerName: string, peer: Peer, observer = false) {
-  const player = { id, peer: peer.id, name: playerName, card: null, observer }
+  const player = { id, peers: [peer.id], name: playerName, card: null, observer }
   if(session.players.some(player => player.id === id)){
-    console.log('Player already in session')
-    session.players.find(player => player.id === id)!.peer = peer.id
+    console.log('Player already in session:', playerName)
+    session.players.find(player => player.id === id)!.peers.push(peer.id)
     updateClients(peer)
     return
   }
@@ -20,12 +20,12 @@ function addPlayerToSession(session: Session, id: string, playerName: string, pe
 }
 
 function removePlayerFromSession(peer: Peer, session: Session) {
-  session.players = session.players.filter(player => player.peer !== peer.id)
+  session.players = session.players.filter(player => player.peers.some(p => p !== peer.id))
 }
 
 
 function updateClients(peer: Peer) {
-  const session = sessions.find(session => session.players.some(player => player.peer === peer.id))
+  const session = sessions.find(session => session.players.some(player => player.peers.includes(peer.id)))
   if (!session) {
     console.error('Session not found when updating clients')
     return
@@ -39,7 +39,7 @@ export default defineWebSocketHandler({
     const params = new URLSearchParams(peer.request?.url?.split('?')[1])
     const playerName = params.get('name') || 'Unknown'
     const id = params.get('id')
-    console.log(`Player ${playerName} connected to session ${params.get('session')}`)
+    console.log(`Player ${playerName} (${id})connected to session ${params.get('session')}`)
     if(!id || id =='null'){
       peer.close(1000,'Player id not found')
       return
@@ -52,7 +52,7 @@ export default defineWebSocketHandler({
     addPlayerToSession(session, id!, playerName, peer)
   },
   close(peer: Peer) {
-    const session = sessions.find(session => session.players.some(player => player.peer === peer.id))
+    const session = sessions.find(session => session.players.some(player => player.peers.includes(peer.id)))
     if(!session){
       console.error('Session not found when closing connection')
       return
@@ -63,16 +63,16 @@ export default defineWebSocketHandler({
   message(peer: Peer, message: Message) {
     const messageData = message.json() as { event: string, value: string }
     const event = messageData.event
-    const session = sessions.find(session => session.players.some(player => player.peer === peer.id))
+    const session = sessions.find(session => session.players.some(player => player.peers.includes(peer.id)))
     if(!session){
       return
     }
-    const player = session.players.find(player => player.peer === peer.id)
+    const player = session.players.find(player => player.peers.includes(peer.id))
     if(event === 'ping'){
       peer.send(JSON.stringify(session))
     }
     if(event === 'vote'){
-      const player = session!.players.find(player => player.peer === peer.id)
+      const player = session!.players.find(player => player.peers.includes(peer.id))
       if(player!.card == messageData.value){
         player!.card = null
       }else{
@@ -82,7 +82,7 @@ export default defineWebSocketHandler({
       updateClients(peer)
     }
     if(event === 'show'){
-      const player = session!.players.find(player => player.peer === peer.id)
+      const player = session!.players.find(player => player.peers.includes(peer.id))
       console.log(`Player ${player!.name} revealed the cards`)
 
       session.cardsVisible = true

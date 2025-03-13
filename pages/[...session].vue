@@ -11,7 +11,11 @@ const playerId = ref('')
 onBeforeMount(() => {
   const name = window.localStorage.getItem('name')
   const sessionid = window.location.pathname.split('/').pop()
-  playerId.value = nanoid(32)
+  if (localStorage.getItem('id')) {
+    playerId.value = localStorage.getItem('id')!
+  } else {
+    playerId.value = nanoid(32)
+  }
 
 
   if (!name) {

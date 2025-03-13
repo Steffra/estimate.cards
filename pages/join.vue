@@ -13,7 +13,9 @@ onBeforeMount(() => {
         }
       })
   }
-
+  if (window.localStorage.getItem('name')) {
+    name.value = window.localStorage.getItem('name')!
+  }
 })
 async function startSession() {
   window.localStorage.setItem('name', name.value)

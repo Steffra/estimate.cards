@@ -2,6 +2,9 @@
 const name = ref('')
 const router = useRouter()
 
+if (window.localStorage.getItem('name')) {
+  name.value = window.localStorage.getItem('name')!
+}
 function startSession() {
   if (!name.value) return
   fetch(`/api/session/new`)
