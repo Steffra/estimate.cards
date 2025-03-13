@@ -11,7 +11,7 @@ function startSession() {
       }
     }).then(data => {
       if (data.id) {
-        window.sessionStorage.setItem('name', name.value)
+        window.localStorage.setItem('name', name.value)
         router.push(`/${data.id}`)
       }
     })

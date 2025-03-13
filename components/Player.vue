@@ -40,7 +40,7 @@ const { player, isVisible, index } = defineProps<{
     index: number
 }>()
 
-const isOwnCard = player.id === window.sessionStorage.getItem('id');
+const isOwnCard = player.id === window.localStorage.getItem('id');
 const container = ref<HTMLElement | null>(null);
 const card = ref<HTMLElement | null>(null);
 const seed = Math.random();

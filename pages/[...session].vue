@@ -9,7 +9,7 @@ const sessionExists = ref(false)
 const playerId = ref('')
 
 onBeforeMount(() => {
-  const name = window.sessionStorage.getItem('name')
+  const name = window.localStorage.getItem('name')
   const sessionid = window.location.pathname.split('/').pop()
   playerId.value = nanoid(32)
 
@@ -23,7 +23,7 @@ onBeforeMount(() => {
     .then(response => {
       if (response.ok) {
         sessionExists.value = true
-        window.sessionStorage.setItem('id', playerId.value)
+        window.localStorage.setItem('id', playerId.value)
         connect(sessionid!, name, playerId.value)
       } else {
         router.push(`/`)
@@ -111,7 +111,7 @@ const somePlayersVoted = computed(() => {
 })
 
 const isObserver = computed(() => {
-  return session.value.players.find(player => player.id == window.sessionStorage.getItem('id'))?.observer!
+  return session.value.players.find(player => player.id == window.localStorage.getItem('id'))?.observer!
 })
 
 const toggleObserver = () => {

@@ -39,7 +39,7 @@ export default defineWebSocketHandler({
     const params = new URLSearchParams(peer.request?.url?.split('?')[1])
     const playerName = params.get('name') || 'Unknown'
     const id = params.get('id')
-    console.log('Player connected', id, playerName)
+    console.log(`Player ${playerName} connected to session ${params.get('session')}`)
     if(!id || id =='null'){
       peer.close(1000,'Player id not found')
       return
@@ -78,9 +78,13 @@ export default defineWebSocketHandler({
       }else{
         player!.card = messageData.value
       }
+      console.log(`Player ${player!.name} voted ${player!.card}`)
       updateClients(peer)
     }
     if(event === 'show'){
+      const player = session!.players.find(player => player.peer === peer.id)
+      console.log(`Player ${player!.name} revealed the cards`)
+
       session.cardsVisible = true
       updateClients(peer)
     }

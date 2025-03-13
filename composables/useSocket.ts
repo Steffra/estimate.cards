@@ -61,8 +61,8 @@ export function useSocket() {
     }
 
     const reconnect = () => {   
-        const name  = sessionStorage.getItem('name')
-        const playerId = sessionStorage.getItem('id')
+        const name  = localStorage.getItem('name')
+        const playerId = localStorage.getItem('id')
         if(!name || !playerId || !session.value.id){
             location.href = '/'
             return

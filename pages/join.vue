@@ -16,7 +16,7 @@ onBeforeMount(() => {
 
 })
 async function startSession() {
-  window.sessionStorage.setItem('name', name.value)
+  window.localStorage.setItem('name', name.value)
 
   if (sessionFromUrl.value) {
     router.push(`/${sessionFromUrl.value}`)
