@@ -60,9 +60,8 @@ onBeforeMount(() => {
   --logo-offset-top-desktop: 10px;
 
 
-  --voted-card-back-box-shadow: none;
   --voted-card-front-box-shadow: 0px 2px 10px var(--branding);
-  --voted-card-back-box-shadow: 0px 2px 10px var(--branding);
+  --voted-card-back-box-shadow: 3px 5px 15px var(--branding);
   --voted-card-front-border: var(--branding);
   --voted-card-back-border: var(--branding);
 
