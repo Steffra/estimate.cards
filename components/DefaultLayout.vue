@@ -10,6 +10,9 @@
 <style scoped>
 .layout-wrapper {
     padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 
     @media (width >=480px) {
         display: flex;
